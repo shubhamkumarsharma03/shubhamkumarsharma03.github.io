@@ -30,6 +30,22 @@ Optional improvements
 - Add a resume PDF and link it from the hero/about section.
 - Replace placeholder project cards with real project links and screenshots.
 
+Add your certificate image
+
+- If you have the real certificate image (e.g. `certificate.png`), place it in the `assets/` folder. The site will display `assets/certificate.png` automatically and fall back to an included SVG placeholder.
+
+Committing & pushing from PowerShell
+
+Use these commands in PowerShell from the repository root to add, commit and push your changes to GitHub:
+
+```powershell
+git add .
+git commit -m "Update portfolio: add certificate and user info"
+git push origin main
+```
+
+After pushing, your site will be published automatically at the GitHub Pages URL above.
+
 If you'd like, I can:
 
 - Wire up a contact form integration (Formspree or Netlify Forms).
@@ -38,4 +54,3 @@ If you'd like, I can:
 
 ---
 Open `index.html` in a browser to preview the new portfolio locally.
-# shubhamkumarsharma03.github.io
