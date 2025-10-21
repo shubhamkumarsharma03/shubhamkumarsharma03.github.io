@@ -72,6 +72,6 @@ body{
 .lightbox-close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:.2rem .6rem;cursor:pointer}
 
 /* Credly badges */
-.badge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:1rem}
-.badge-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:.6rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.badge-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:1rem;align-items:flex-start}
+.badge-card{width:150px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:.6rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;text-align:center}
 .badge-card:hover,.badge-card:focus-within{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.35), 0 6px 18px rgba(124,58,237,.18);border-color:rgba(124,58,237,.35)}
