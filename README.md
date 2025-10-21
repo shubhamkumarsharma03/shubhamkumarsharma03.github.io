@@ -1,70 +1,41 @@
-# shubhamkumarsharma03.github.io
+# Shubham Kumar Sharma — Portfolio
 
-This repository is set up to serve a personal portfolio on GitHub Pages at:
+> Personal portfolio website showcasing my projects, skills, and professional experience.
 
-https://shubhamkumarsharma03.github.io
+🌐 **Live Site:** [shubhamkumarsharma03.github.io](https://shubhamkumarsharma03.github.io)
 
-Files added in this commit:
+## About
 
-- `index.html` — the homepage for your portfolio (root of the site)
-- `css/style.css` — simple responsive styles used by `index.html`
+I'm a software developer focused on building modern web and mobile applications. Currently learning Java and Data Structures while working on React Native projects.
 
-How this site is published
+## Featured Projects
 
-1. Because the repository name is `shubhamkumarsharma03.github.io`, GitHub Pages will publish the site from the `main` branch root by default.
-2. Push your changes to the `main` branch on GitHub and the site will become available at the URL above within a minute or two.
+- **Expense Tracker** — Mobile app built with React Native + Expo for tracking personal expenses
+- **AI Email Writer** — AI-powered email generation tool using React, Spring Boot, and Gemini API
+- **Additional projects** — Dynamically loaded from my GitHub repositories
 
-Preview locally
+## Tech Stack
 
-- Open `index.html` in your browser (double-click or use a local static server such as `Live Server` in VS Code).
+- Java, Data Structures & Algorithms
+- React Native, Expo
+- JavaScript, TypeScript
+- HTML, CSS
+- Git & GitHub
+- IBM Cloud (basics)
 
-Customizing the site
+## Certifications
 
-- Edit `index.html` to change text, add/remove sections, or link to your real projects.
-- Edit `css/style.css` to change fonts, colors, or layout.
-- Add images to an `assets/` folder and reference them from `index.html`.
+- AI & Cloud Internship — Edunet Foundation (IBM Cloud)
+- Credly verified badges in Python, Cybersecurity, AWS, and more
 
-Optional improvements
+## Connect
 
-- Add a `CNAME` file at the repository root if you want to use a custom domain.
-- Add a resume PDF and link it from the hero/about section.
-- Replace placeholder project cards with real project links and screenshots.
+- **Email:** shubhamsharma86900@gmail.com
+- **LinkedIn:** [shubhamkumarsharma03](https://www.linkedin.com/in/shubhamkumarsharma03/)
+- **GitHub:** [shubhamkumarsharma03](https://github.com/shubhamkumarsharma03/)
+- **LeetCode:** [shubhamkumarsharma](https://leetcode.com/u/shubhamkumarsharma/)
+- **Credly:** [shubham3](https://www.credly.com/users/shubham3)
 
-Add your certificate image
+---
 
-- If you have the real certificate image (e.g. `certificate.png`), place it in the `assets/` folder. The site will display `assets/certificate.png` automatically and fall back to an included SVG placeholder.
-
-Committing & pushing from PowerShell
-
-Use these commands in PowerShell from the repository root to add, commit and push your changes to GitHub:
-
-```powershell
-git add .
-git commit -m "Update portfolio: add certificate and user info"
-git push origin main
-```
-
-After pushing, your site will be published automatically at the GitHub Pages URL above.
-
-
-Open `index.html` in a browser to preview the new portfolio locally.
-
-Show Credly badges in Certifications
-
-This site can display your Credly badges using Credly's official embed code. To configure:
-
-1. Open `index.html` and search for `CREDLY_BADGE_IDS`.
-2. Paste your badge IDs inside the array, for example:
-
-```js
-const CREDLY_BADGE_IDS = [
-	'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
-	'ffffffff-1111-2222-3333-444444444444'
-];
-```
-
-How to find a badge ID:
-
-- On credly.com, open one of your badges, click "Share", choose the Embed option, and copy the value in `data-share-badge-id`. Alternatively, copy the badge page URL and find the long UUID at the end.
-
-Once added, reload the page; the badges will render under the "Badges (Credly)" section. If you prefer to just link your profile, the page also shows a fallback link to: https://www.credly.com/users/shubham3
+© 2025 Shubham Kumar Sharma

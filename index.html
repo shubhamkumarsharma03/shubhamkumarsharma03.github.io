@@ -9,7 +9,8 @@
     <style>
       /* Force Credly badges to align left-to-right with wrap (fallback override) */
       #credly-badges.badge-grid{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
-      #credly-badges .badge-card{width:150px}
+      #credly-badges .badge-card{width:150px;overflow:hidden}
+      #credly-badges .badge-card iframe{max-width:100%;height:auto}
     </style>
   </head>
   <body>
