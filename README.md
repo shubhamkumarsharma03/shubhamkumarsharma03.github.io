@@ -46,35 +46,25 @@ git push origin main
 
 After pushing, your site will be published automatically at the GitHub Pages URL above.
 
-Add a project screenshot (Expense Tracker)
 
-- Save a screenshot image as `assets/expense-tracker.png`. The Projects section will use it automatically and fall back to a placeholder if missing.
-
-```powershell
-Set-Location "C:\Users\shubh\Documents\GitHub\shubhamkumarsharma03.github.io"
-Copy-Item "C:\path\to\your\expense-tracker.png" ".\assets\expense-tracker.png" -Force
-git add .\assets\expense-tracker.png
-git commit -m "Add expense tracker screenshot"
-git push origin main
-```
-
-Add your resume PDF
-
-- Save your resume (e.g., `Resume_Updated.pdf`) into the `assets/` folder. The site links to `assets/Resume_Updated.pdf` from the header and the hero section.
-
-```powershell
-Set-Location "C:\Users\shubh\Documents\GitHub\shubhamkumarsharma03.github.io"
-Copy-Item "C:\Users\shubh\Desktop\Shubham\Resumes\Resume_Updated.pdf" ".\assets\Resume_Updated.pdf" -Force
-git add .\assets\Resume_Updated.pdf
-git commit -m "Add resume PDF"
-git push origin main
-```
-
-If you'd like, I can:
-
-- Wire up a contact form integration (Formspree or Netlify Forms).
-- Add a script to automatically generate a projects grid from a JSON file.
-- Improve accessibility and SEO meta tags.
-
----
 Open `index.html` in a browser to preview the new portfolio locally.
+
+Show Credly badges in Certifications
+
+This site can display your Credly badges using Credly's official embed code. To configure:
+
+1. Open `index.html` and search for `CREDLY_BADGE_IDS`.
+2. Paste your badge IDs inside the array, for example:
+
+```js
+const CREDLY_BADGE_IDS = [
+	'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+	'ffffffff-1111-2222-3333-444444444444'
+];
+```
+
+How to find a badge ID:
+
+- On credly.com, open one of your badges, click "Share", choose the Embed option, and copy the value in `data-share-badge-id`. Alternatively, copy the badge page URL and find the long UUID at the end.
+
+Once added, reload the page; the badges will render under the "Badges (Credly)" section. If you prefer to just link your profile, the page also shows a fallback link to: https://www.credly.com/users/shubham3

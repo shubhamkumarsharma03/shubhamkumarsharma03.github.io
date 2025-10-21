@@ -67,19 +67,23 @@
         <div class="projects-grid">
           <article class="card">
             <h4>Expense Tracker (mobile)</h4>
-            <a href="https://github.com/shubhamkumarsharma03/expanse-tracker" target="_blank" rel="noopener" title="Open repository">
-              <picture>
-                <source srcset="assets/expense-tracker.png" type="image/png" />
-                <img src="assets/project-placeholder.svg" alt="Expense Tracker app preview" class="thumb" />
-              </picture>
-            </a>
+            <picture>
+              <source srcset="assets/expense-tracker.png" type="image/png" />
+              <img src="assets/project-placeholder.svg" alt="Expense Tracker app preview" class="thumb" data-lightbox-src="assets/expense-tracker.png" />
+            </picture>
             <p>A React Native + Expo mobile app for tracking expenses with a modern, user-friendly UI/UX.</p>
             <p><a href="https://github.com/shubhamkumarsharma03/expanse-tracker" target="_blank" rel="noopener">Repository</a></p>
+            <a class="stretched-link" href="https://github.com/shubhamkumarsharma03/expanse-tracker" target="_blank" rel="noopener" aria-label="Open Expense Tracker repository"></a>
           </article>
           <article class="card">
-            <h4>More projects</h4>
-            <p>Replace this card with other projects and screenshots. Link to GitHub repos or live demos.</p>
-            <p><a href="https://github.com/shubhamkumarsharma03/" target="_blank" rel="noopener">My GitHub</a></p>
+            <h4>AI Email Writer</h4>
+            <picture>
+              <source srcset="assets/ai-email-writer.png" type="image/png" />
+              <img src="assets/project-placeholder.svg" alt="AI Email Writer app preview" class="thumb" data-lightbox-src="assets/ai-email-writer.png" />
+            </picture>
+            <p>AI‑powered email writer with a React frontend and Spring Boot backend, using the Gemini API to generate email replies based on user input.</p>
+            <p><a href="https://github.com/shubhamkumarsharma03/AI-email-writer" target="_blank" rel="noopener">Repository</a></p>
+            <a class="stretched-link" href="https://github.com/shubhamkumarsharma03/AI-email-writer" target="_blank" rel="noopener" aria-label="Open AI Email Writer repository"></a>
           </article>
         </div>
         <h4 style="margin-top:2rem">More from GitHub</h4>
@@ -96,7 +100,7 @@
             <p>One-month internship focused on AI and IBM Cloud technologies. Duration: July 2025 — August 2025.</p>
             <p>Certificate:</p>
             <p>
-              <a href="assets/certificate.png" title="Open full-size certificate">
+              <a href="assets/certificate.png" class="lightbox" data-lightbox-src="assets/certificate.png" title="View certificate">
                 <picture>
                   <!-- Prefer the real certificate image if present -->
                   <source srcset="assets/certificate.png" type="image/png">
@@ -106,6 +110,10 @@
               </a>
             </p>
           </article>
+        </div>
+        <h4 style="margin-top:2rem">Badges (Credly)</h4>
+        <div id="credly-badges" class="badge-grid" aria-live="polite">
+          <div class="badge-card muted">Badges will appear here. To display badges, add your Credly badge IDs; meanwhile, visit <a href="https://www.credly.com/users/shubham3" target="_blank" rel="noopener">credly.com/users/shubham3</a>.</div>
         </div>
       </section>
 
@@ -157,6 +165,7 @@
                 <p>
                   <a href="${r.html_url}" target="_blank" rel="noopener">Repository</a> ${demo}
                 </p>
+                <a class="stretched-link" href="${r.html_url}" target="_blank" rel="noopener" aria-label="Open ${r.name} repository"></a>
               </article>
             `;
           }).join('');
@@ -167,6 +176,54 @@
         }
       }
       loadRepos();
+
+      // Credly badges: render by badge IDs (fill in your badge IDs below)
+      const CREDLY_BADGE_IDS = [
+        '917a930d-a814-4684-b6a0-390ca5ff0ec9',
+        '2b58edc7-d7af-416b-87be-2122ade2baf5',
+        '43e6fbd7-3901-48dc-a882-1e02b0900aef',
+        'ca4c0d0d-6095-4aed-907c-3aa74c1a3a0f',
+        'ae2ebdcd-ac08-4f66-87af-030fcd5204f2',
+        '4b294454-649f-4568-9db1-74ed9fc38ca0'
+      ];
+      (function renderCredly(){
+        const container = document.getElementById('credly-badges');
+        if(!container) return;
+        if(!CREDLY_BADGE_IDS.length){
+          return; // leave fallback message
+        }
+        container.innerHTML = CREDLY_BADGE_IDS.map(id => `
+          <div class="badge-card">
+            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="${id}" data-share-badge-host="https://www.credly.com"></div>
+          </div>
+        `).join('');
+        // load Credly embed once (protocol-relative per snippet)
+        const s = document.createElement('script');
+        s.async = true; s.type = 'text/javascript'; s.src = '//cdn.credly.com/assets/utilities/embed.js';
+        document.body.appendChild(s);
+      })();
+
+      // Simple Lightbox for images (already used by screenshots/certificates)
+      // Simple Lightbox for images
+      (function(){
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.innerHTML = '<div class="lightbox-content"><img alt="Preview"/><button class="lightbox-close" aria-label="Close">×</button></div>';
+        document.body.appendChild(overlay);
+        const imgEl = overlay.querySelector('img');
+        const closeBtn = overlay.querySelector('.lightbox-close');
+        function open(src){ imgEl.src = src; overlay.classList.add('show'); }
+        function close(){ overlay.classList.remove('show'); imgEl.src=''; }
+        overlay.addEventListener('click', (e)=>{ if(e.target===overlay) close(); });
+        closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+        document.addEventListener('click', (e)=>{
+          const t = e.target.closest('[data-lightbox-src], a.lightbox');
+          if(!t) return;
+          const src = t.getAttribute('data-lightbox-src') || t.getAttribute('href');
+          if(src){ e.preventDefault(); open(src); }
+        });
+      })();
     </script>
   </body>
 </html>

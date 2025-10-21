@@ -20,21 +20,32 @@ body{
 .site-header .container{display:flex;align-items:center;justify-content:space-between}
 .brand{margin:0;font-size:1.1rem}
 .nav a{color:var(--muted);margin-left:1rem;text-decoration:none}
+.nav a:hover,.nav a:focus-visible{color:var(--text)}
 .hero{padding:4rem 0;text-align:left}
 .hero h2{margin:0 0 1rem;font-size:2rem}
 .hero p{color:var(--muted);max-width:60ch}
-.btn{display:inline-block;margin-top:1rem;padding:.6rem 1rem;border-radius:6px;background:var(--accent);color:white;text-decoration:none}
+.btn{display:inline-block;margin-top:1rem;padding:.6rem 1rem;border-radius:6px;background:var(--accent);color:white;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
 .btn.outline{background:transparent;border:1px solid var(--accent);color:var(--text);margin-left:.6rem}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.35)}
+.btn.outline:hover,.btn.outline:focus-visible{background:rgba(124,58,237,.15)}
 .section{padding:3rem 0}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:8px}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;will-change:transform;position:relative}
 .card h4{margin:0 0 .5rem}
-.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
-.repo-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:8px}
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:1rem}
+.repo-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;will-change:transform;position:relative}
 .repo-card h5{margin:.2rem 0 .4rem 0;font-size:1rem}
 .repo-card .muted{color:var(--muted)}
 .repo-meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem;margin:.4rem 0}
 .repo-lang{display:inline-block;padding:.2rem .5rem;border:1px solid rgba(255,255,255,0.12);border-radius:999px;margin-right:.5rem}
+.card a:not(.stretched-link),.repo-card a:not(.stretched-link){position:relative;z-index:2}
+.stretched-link{position:absolute;inset:0;z-index:1;color:transparent;text-indent:-9999px}
+.card:hover,.card:focus-within,.repo-card:hover,.repo-card:focus-within{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.35), 0 6px 18px rgba(124,58,237,.18);border-color:rgba(124,58,237,.35)}
+
+@media (prefers-reduced-motion: reduce){
+  .card,.repo-card{transition:none}
+  .card:hover,.card:focus-within,.repo-card:hover,.repo-card:focus-within{transform:none}
+}
 .thumb{width:100%;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.06);display:block;margin:.5rem 0 1rem 0;object-fit:cover;aspect-ratio:16/9;max-height:260px}
 @media (max-width:600px){
   .thumb{max-height:200px}
@@ -45,9 +56,22 @@ body{
 .site-footer{padding:1rem 0;text-align:center;color:var(--muted)}
 /* tags */
 .tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.tag{display:inline-block;padding:.3rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:var(--muted);font-size:.85rem}
+.tag{display:inline-block;padding:.3rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:var(--muted);font-size:.85rem;transition:transform .15s ease, box-shadow .15s ease}
+.tag:hover,.tag:focus-visible{transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,0,0,.25)}
 
 @media (max-width:600px){
   .hero h2{font-size:1.4rem}
   .container{padding:1rem}
 }
+
+/* Lightbox */
+.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:1000}
+.lightbox-overlay.show{display:flex}
+.lightbox-content{position:relative;max-width:min(92vw,1100px);max-height:90vh}
+.lightbox-content img{width:100%;height:auto;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:.2rem .6rem;cursor:pointer}
+
+/* Credly badges */
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:1rem}
+.badge-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:.6rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.badge-card:hover,.badge-card:focus-within{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.35), 0 6px 18px rgba(124,58,237,.18);border-color:rgba(124,58,237,.35)}
