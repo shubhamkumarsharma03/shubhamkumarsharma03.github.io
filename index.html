@@ -6,6 +6,11 @@
     <title>Shubham Kumar Sharma — Portfolio</title>
     <meta name="description" content="Portfolio of Shubham Kumar Sharma — projects, skills and contact." />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Force Credly badges to align left-to-right with wrap (fallback override) */
+      #credly-badges.badge-grid{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+      #credly-badges .badge-card{width:150px}
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -115,6 +120,9 @@
         <div id="credly-badges" class="badge-grid" aria-live="polite">
           <div class="badge-card muted">Badges will appear here. To display badges, add your Credly badge IDs; meanwhile, visit <a href="https://www.credly.com/users/shubham3" target="_blank" rel="noopener">credly.com/users/shubham3</a>.</div>
         </div>
+        <p style="margin-top:12px">
+          <a class="btn outline" href="https://www.credly.com/users/shubham3" target="_blank" rel="noopener">View all badges on Credly</a>
+        </p>
       </section>
 
       <section id="contact" class="section container">
