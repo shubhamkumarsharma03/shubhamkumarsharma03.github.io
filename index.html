@@ -82,6 +82,10 @@
             <p><a href="https://github.com/shubhamkumarsharma03/" target="_blank" rel="noopener">My GitHub</a></p>
           </article>
         </div>
+        <h4 style="margin-top:2rem">More from GitHub</h4>
+        <div id="repo-grid" class="repo-grid" aria-live="polite">
+          <div class="repo-card loading">Loading repositories…</div>
+        </div>
       </section>
 
       <section id="experience" class="section container">
@@ -121,6 +125,48 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Dynamically load recent GitHub repositories
+      const GITHUB_USERNAME = 'shubhamkumarsharma03';
+      const EXCLUDE_REPOS = new Set([
+        'shubhamkumarsharma03.github.io', // this site
+        'expanse-tracker' // already featured above
+      ]);
+      async function loadRepos() {
+        const grid = document.getElementById('repo-grid');
+        try {
+          const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
+          if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+          const repos = (await res.json())
+            .filter(r => !r.fork && !EXCLUDE_REPOS.has(r.name))
+            .slice(0, 6);
+          if (!repos.length) {
+            grid.innerHTML = '<div class="repo-card">No repositories to show yet.</div>';
+            return;
+          }
+          grid.innerHTML = repos.map(r => {
+            const lang = r.language ? `<span class=repo-lang>${r.language}</span>` : '';
+            const stars = r.stargazers_count ? `⭐ ${r.stargazers_count}` : '';
+            const demo = r.homepage ? `<a href="${r.homepage}" target="_blank" rel="noopener">Live</a>` : '';
+            const desc = r.description ? r.description.replace(/</g,'&lt;') : '';
+            return `
+              <article class="repo-card">
+                <h5>${r.name}</h5>
+                <p class="muted">${desc}</p>
+                <div class="repo-meta">${lang} <span>${stars}</span></div>
+                <p>
+                  <a href="${r.html_url}" target="_blank" rel="noopener">Repository</a> ${demo}
+                </p>
+              </article>
+            `;
+          }).join('');
+        } catch (err) {
+          grid.innerHTML = '<div class="repo-card error">Could not load repositories right now. Please try again later.</div>';
+          // Optional: console error for debug
+          console.error(err);
+        }
+      }
+      loadRepos();
     </script>
   </body>
 </html>

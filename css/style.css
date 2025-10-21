@@ -29,6 +29,12 @@ body{
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:8px}
 .card h4{margin:0 0 .5rem}
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.repo-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:8px}
+.repo-card h5{margin:.2rem 0 .4rem 0;font-size:1rem}
+.repo-card .muted{color:var(--muted)}
+.repo-meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem;margin:.4rem 0}
+.repo-lang{display:inline-block;padding:.2rem .5rem;border:1px solid rgba(255,255,255,0.12);border-radius:999px;margin-right:.5rem}
 .thumb{width:100%;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.06);display:block;margin:.5rem 0 1rem 0;object-fit:cover;aspect-ratio:16/9;max-height:260px}
 @media (max-width:600px){
   .thumb{max-height:200px}
