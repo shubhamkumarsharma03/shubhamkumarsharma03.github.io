@@ -24,11 +24,16 @@ body{
 .hero h2{margin:0 0 1rem;font-size:2rem}
 .hero p{color:var(--muted);max-width:60ch}
 .btn{display:inline-block;margin-top:1rem;padding:.6rem 1rem;border-radius:6px;background:var(--accent);color:white;text-decoration:none}
+.btn.outline{background:transparent;border:1px solid var(--accent);color:var(--text);margin-left:.6rem}
 .section{padding:3rem 0}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:8px}
 .card h4{margin:0 0 .5rem}
+.thumb{width:100%;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.06);display:block;margin:.5rem 0 1rem 0;object-fit:cover;aspect-ratio:16/9}
 .site-footer{padding:1rem 0;text-align:center;color:var(--muted)}
+/* tags */
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{display:inline-block;padding:.3rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:var(--muted);font-size:.85rem}
 
 @media (max-width:600px){
   .hero h2{font-size:1.4rem}

@@ -46,6 +46,30 @@ git push origin main
 
 After pushing, your site will be published automatically at the GitHub Pages URL above.
 
+Add a project screenshot (Expense Tracker)
+
+- Save a screenshot image as `assets/expense-tracker.png`. The Projects section will use it automatically and fall back to a placeholder if missing.
+
+```powershell
+Set-Location "C:\Users\shubh\Documents\GitHub\shubhamkumarsharma03.github.io"
+Copy-Item "C:\path\to\your\expense-tracker.png" ".\assets\expense-tracker.png" -Force
+git add .\assets\expense-tracker.png
+git commit -m "Add expense tracker screenshot"
+git push origin main
+```
+
+Add your resume PDF
+
+- Save your resume (e.g., `Resume_Updated.pdf`) into the `assets/` folder. The site links to `assets/Resume_Updated.pdf` from the header and the hero section.
+
+```powershell
+Set-Location "C:\Users\shubh\Documents\GitHub\shubhamkumarsharma03.github.io"
+Copy-Item "C:\Users\shubh\Desktop\Shubham\Resumes\Resume_Updated.pdf" ".\assets\Resume_Updated.pdf" -Force
+git add .\assets\Resume_Updated.pdf
+git commit -m "Add resume PDF"
+git push origin main
+```
+
 If you'd like, I can:
 
 - Wire up a contact form integration (Formspree or Netlify Forms).
