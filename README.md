@@ -36,6 +36,10 @@ I'm a software developer focused on building modern web and mobile applications.
 - **LeetCode:** [shubhamkumarsharma](https://leetcode.com/u/shubhamkumarsharma/)
 - **Credly:** [shubham3](https://www.credly.com/users/shubham3)
 
+## Assets & Credits
+
+- Skill icons used in the Skills section are sourced from Devicon: https://github.com/devicons/devicon (MIT License). Huge thanks to the Devicon maintainers and contributors.
+
 ---
 
 © 2025 Shubham Kumar Sharma
