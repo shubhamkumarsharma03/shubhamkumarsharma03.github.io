@@ -2,7 +2,9 @@
 
 > Personal portfolio website showcasing my projects, skills, and professional experience.
 
-🌐 **Live Site:** [shubhamkumarsharma03.github.io](https://shubhamkumarsharma03.github.io)
+🌐 **Live Site:** [shubhamksharma.me](shubhamksharma.me)
+                   [shubhamkumarsharma03.github.io](https://shubhamkumarsharma03.github.io)
+                   
 
 ## About
 
