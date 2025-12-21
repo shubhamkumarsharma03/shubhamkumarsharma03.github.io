@@ -35,6 +35,13 @@
       </div>
     </header>
 
+    <!-- Quick access menu button (shows when header hides on scroll) -->
+    <button class="quick-nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <main>
       <section class="hero">
         <div class="container">
@@ -67,33 +74,58 @@
 
       <section id="about" class="section container">
         <h3>About Me</h3>
-        <div class="about-content">
-          <p class="about-intro">I'm a passionate software developer focused on building real-world, scalable solutions using modern technologies. Currently pursuing my B.Tech in Information Technology, I combine academic knowledge with hands-on experience to create impactful digital products.</p>
-          
-          <p>My technical journey spans full-stack development, cloud computing, and artificial intelligence. I specialize in building end-to-end applications—from designing intuitive user interfaces with React and React Native to architecting robust backends with Node.js, Spring Boot, and managing databases like MySQL and MongoDB. My experience with AWS and IBM Cloud has given me deep insights into deploying and scaling applications in production environments.</p>
-          
-          <div class="about-highlights">
-            <div class="highlight-item">
-              <h4>🎓 AWS AI & ML Scholar</h4>
-              <p>Selected for advanced training in artificial intelligence and machine learning technologies through AWS's competitive scholarship program.</p>
-            </div>
-            <div class="highlight-item">
-              <h4>💼 IBM Cloud Internship</h4>
-              <p>Gained hands-on experience with enterprise-level AI services and cloud infrastructure during my internship with Edunet Foundation and IBM Cloud.</p>
-            </div>
-            <div class="highlight-item">
-              <h4>🚀 Production-Ready Projects</h4>
-              <p>Built and deployed full-stack applications including AI-powered document querying systems, intelligent email writers, and mobile expense trackers.</p>
-            </div>
-            <div class="highlight-item">
-              <h4>💡 Problem-Solving Mindset</h4>
-              <p>Regularly sharpen my data structures and algorithms skills on LeetCode, applying computational thinking to build efficient, scalable solutions.</p>
-            </div>
+        <div class="about-bento">
+          <!-- Main About Card -->
+          <div class="bento-card bento-main">
+            <span class="card-label">MORE ABOUT ME</span>
+            <h4 class="card-title">About</h4>
+            <p>I'm a passionate Full Stack Developer focused on building real-world, scalable solutions using modern technologies. Currently pursuing my B.Tech in Information Technology, I combine academic knowledge with hands-on experience to create impactful digital products.</p>
+            <p>My technical journey spans full-stack development, cloud computing, and artificial intelligence. I specialize in building end-to-end applications—from designing intuitive user interfaces with React and React Native to architecting robust backends with Node.js, Spring Boot, and managing databases like MySQL and MongoDB.</p>
           </div>
-          
-          <p class="about-approach"><strong>How I Work:</strong> I believe in writing clean, maintainable code that scales. My approach combines user-centric design thinking with engineering best practices—always keeping performance, security, and user experience at the forefront. I'm constantly learning new technologies and staying updated with industry trends to deliver modern, future-proof solutions.</p>
-          
-          <p class="about-goals"><strong>What I'm Looking For:</strong> I'm actively seeking software development internships and entry-level opportunities where I can contribute to impactful projects, collaborate with talented teams, and continue growing as a developer. I'm particularly interested in roles involving full-stack development, cloud computing, and AI/ML applications.</p>
+
+          <!-- Stats Cards -->
+          <div class="bento-card bento-stat">
+            <div class="stat-number">6</div>
+            <div class="stat-label">MONTHS<br>EXPERIENCE</div>
+          </div>
+
+          <div class="bento-card bento-stat">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">PROJECTS<br>COMPLETED</div>
+          </div>
+
+          <div class="bento-card bento-stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">TECHNOLOGIES<br>MASTERED</div>
+          </div>
+
+          <!-- Experience Card -->
+          <div class="bento-card bento-feature">
+            <span class="card-label">🎓 AWS AI & ML SCHOLAR</span>
+            <h4 class="card-title">Advanced Training</h4>
+            <p>Selected for advanced training in artificial intelligence and machine learning technologies through AWS's competitive scholarship program.</p>
+          </div>
+
+          <!-- IBM Card -->
+          <div class="bento-card bento-feature">
+            <span class="card-label">💼 IBM CLOUD INTERNSHIP</span>
+            <h4 class="card-title">Enterprise Experience</h4>
+            <p>Gained hands-on experience with enterprise-level AI services and cloud infrastructure during my internship with Edunet Foundation and IBM Cloud.</p>
+          </div>
+
+          <!-- Projects Card -->
+          <div class="bento-card bento-feature">
+            <span class="card-label">🚀 PRODUCTION READY</span>
+            <h4 class="card-title">Real-World Projects</h4>
+            <p>Built and deployed full-stack applications including AI-powered document querying systems, intelligent email writers, and mobile expense trackers.</p>
+          </div>
+
+          <!-- Problem Solving Card -->
+          <div class="bento-card bento-feature">
+            <span class="card-label">💡 PROBLEM SOLVING</span>
+            <h4 class="card-title">Competitive Coding</h4>
+            <p>Regularly sharpen my data structures and algorithms skills on LeetCode, applying computational thinking to build efficient, scalable solutions.</p>
+          </div>
         </div>
       </section>
 
@@ -191,53 +223,75 @@
       <section id="projects" class="section container">
         <h3>Featured Projects</h3>
         <p class="section-intro">Real-world applications showcasing my skills in full-stack development, AI, and cloud technologies</p>
-        <div class="projects-grid">
+        <div class="projects-bento">
           
-          <article class="card">
-            <h4>Intelligent Document Querying System</h4>
+          <article class="project-card project-large">
+            <span class="card-label">⚡ AI-POWERED</span>
+            <h4 class="card-title">Intelligent Document Querying System</h4>
             <picture>
               <source srcset="assets/Document-querying-system.png" type="image/png" />
-              <img src="assets/project-placeholder.svg" alt="Intelligent Document Querying System app preview" class="thumb" data-lightbox-src="assets/Document-querying-system.png" style="object-fit:contain;max-height:200px" />
+              <img src="assets/Document-querying-system.png" alt="Intelligent Document Querying System app preview" class="project-thumb" loading="lazy" data-lightbox-src="assets/Document-querying-system.png" />
             </picture>
-            <p class="project-problem"><strong>Problem:</strong> Manual document searching is time-consuming and inefficient.</p>
-            <p><strong>Solution:</strong> AI-powered document querying system using AWS services and natural language processing to enable intelligent search and instant information retrieval from uploaded documents.</p>
-            <p class="project-tech"><strong>Tech:</strong> AWS, NLP, Python, AI/ML</p>
-            <p><a href="https://github.com/shubhamkumarsharma03/Intelligent-Document-Querying-System" target="_blank" rel="noopener">View on GitHub →</a></p>
-            <a class="stretched-link" href="https://github.com/shubhamkumarsharma03/Intelligent-Document-Querying-System" target="_blank" rel="noopener" aria-label="Open Intelligent Document Querying System repository"></a>
+            <p class="project-desc">AI-powered document querying system using AWS services and natural language processing to enable intelligent search and instant information retrieval from uploaded documents.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">AI/ML</span>
+            </div>
+            <a href="https://github.com/shubhamkumarsharma03/Intelligent-Document-Querying-System" target="_blank" rel="noopener" class="project-link">View Project →</a>
           </article>
 
-          <article class="card">
-            <h4>AI Email Writer</h4>
+          <article class="project-card">
+            <span class="card-label">🤖 FULL-STACK AI</span>
+            <h4 class="card-title">AI Email Writer</h4>
             <picture>
               <source srcset="assets/ai-email-writer.png" type="image/png" />
-              <img src="assets/project-placeholder.svg" alt="AI Email Writer app preview" class="thumb" data-lightbox-src="assets/ai-email-writer.png" />
+              <img src="assets/ai-email-writer.png" alt="AI Email Writer app preview" class="project-thumb" loading="lazy" data-lightbox-src="assets/ai-email-writer.png" />
             </picture>
-            <p class="project-problem"><strong>Problem:</strong> Writing professional emails is repetitive and time-consuming.</p>
-            <p><strong>Solution:</strong> Full-stack AI email generator that crafts context-aware, professional email responses using Google's Gemini API, helping users save time and improve communication.</p>
-            <p class="project-tech"><strong>Tech:</strong> React, Spring Boot, Gemini API, REST API</p>
-            <p><a href="https://github.com/shubhamkumarsharma03/AI-email-writer" target="_blank" rel="noopener">View on GitHub →</a></p>
-            <a class="stretched-link" href="https://github.com/shubhamkumarsharma03/AI-email-writer" target="_blank" rel="noopener" aria-label="Open AI Email Writer repository"></a>
+            <p class="project-desc">Full-stack AI email generator that crafts context-aware, professional email responses using Google's Gemini API.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">Gemini API</span>
+            </div>
+            <a href="https://github.com/shubhamkumarsharma03/AI-email-writer" target="_blank" rel="noopener" class="project-link">View Project →</a>
           </article>
           
-
-          <article class="card">
-            <h4>Expense Tracker</h4>
+          <article class="project-card">
+            <span class="card-label">📱 MOBILE APP</span>
+            <h4 class="card-title">Expense Tracker</h4>
             <picture>
               <source srcset="assets/expense-tracker.png" type="image/png" />
-              <img src="assets/project-placeholder.svg" alt="Expense Tracker app preview" class="thumb" data-lightbox-src="assets/expense-tracker.png" />
+              <img src="assets/expense-tracker.png" alt="Expense Tracker app preview" class="project-thumb" loading="lazy" data-lightbox-src="assets/expense-tracker.png" />
             </picture>
-            <p class="project-problem"><strong>Problem:</strong> People struggle to monitor daily spending and budget effectively.</p>
-            <p><strong>Solution:</strong> Cross-platform mobile app for effortless expense tracking with real-time categorization, visual analytics, and budget insights to help users make informed financial decisions.</p>
-            <p class="project-tech"><strong>Tech:</strong> React Native, Expo, JavaScript, Mobile Development</p>
-            <p><a href="https://github.com/shubhamkumarsharma03/expanse-tracker" target="_blank" rel="noopener">View on GitHub →</a></p>
-            <a class="stretched-link" href="https://github.com/shubhamkumarsharma03/expanse-tracker" target="_blank" rel="noopener" aria-label="Open Expense Tracker repository"></a>
+            <p class="project-desc">Cross-platform mobile app for effortless expense tracking with real-time categorization and visual analytics.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Expo</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <a href="https://github.com/shubhamkumarsharma03/expanse-tracker" target="_blank" rel="noopener" class="project-link">View Project →</a>
           </article>
 
         </div>
-        <h4 style="margin-top:2rem">More from GitHub</h4>
+        <h4 style="margin-top:3rem;font-size:1.5rem;margin-bottom:1.5rem">More from GitHub</h4>
         <div id="repo-grid" class="repo-grid" aria-live="polite">
           <div class="repo-card loading">Loading repositories…</div>
         </div>
+      </section>
+
+      <section id="testimonial" class="section container">
+        <h3>Reviewer Feedback</h3>
+        <p class="section-intro">Direct words from Udacity’s project reviewer for my Intelligent Document Querying System</p>
+        <article class="card">
+          <span class="card-label">Udacity Nanodegree • AI</span>
+          <h4 class="card-title">Flawless Victory</h4>
+          <p>“Superb job on the first submission! 🍾 The fact that you have submitted a flawless piece of work is in itself commendable, but to have done it on the first attempt is quite exceptional. You seem to have an instinctive sense of what is essential here. You've mastered the material quickly and applied it perfectly, so I think you'll have an easy (or at least easier) job in the future. Just keep doing what you're doing.”</p>
+          <p>“How did they say it in Mortal Kombat? FLAWLESS VICTORY!”</p>
+          <p>“The clarity and accuracy in your explanation are truly outstanding, well done! 🏆 It was great to review such a nice project; thank you! ⭐ We can't wait to see your future projects! Never stop learning and stay Udacious.”</p>
+          <p class="section-intro" style="margin-top:1rem">— Udacity Project Reviewer, Intelligent Document Querying System</p>
+        </article>
       </section>
 
       <section id="experience" class="section container">
@@ -313,7 +367,20 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container">© <span id="year"></span> Shubham Kumar Sharma</div>
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Shubham Kumar Sharma" class="footer-logo">
+          <p class="footer-tagline">Building scalable web & AI-powered applications</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <p class="footer-copyright">© <span id="year"></span> Shubham Kumar Sharma. Crafted with 💜</p>
+      </div>
     </footer>
 
     <script src="js/script.js"></script>

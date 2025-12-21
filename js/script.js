@@ -101,76 +101,66 @@ const CREDLY_BADGE_IDS = [
   });
 })();
 
-// Mobile menu toggle
+// Mobile / Quick menu toggle
 (function(){
   const toggle = document.querySelector('.mobile-menu-toggle');
+  const quickToggle = document.querySelector('.quick-nav-toggle');
   const nav = document.querySelector('.nav');
   const navLinks = document.querySelectorAll('.nav a');
+
+  function setExpanded(isActive){
+    if(toggle) toggle.setAttribute('aria-expanded', isActive);
+    if(quickToggle) quickToggle.setAttribute('aria-expanded', isActive);
+  }
+
+  function toggleNav(force){
+    if(!nav) return;
+    const isActive = force !== undefined ? force : !nav.classList.contains('active');
+    nav.classList.toggle('active', isActive);
+    document.body.classList.toggle('nav-open', isActive);
+    if(quickToggle) quickToggle.classList.toggle('show', isActive || (window.pageYOffset || document.documentElement.scrollTop) > 80);
+    setExpanded(isActive);
+    document.body.style.overflow = isActive ? 'hidden' : '';
+  }
   
   if(toggle && nav){
-    toggle.addEventListener('click', ()=>{
-      const isActive = nav.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', isActive);
-      document.body.style.overflow = isActive ? 'hidden' : '';
-    });
-    
-    // Close menu when clicking on a link
-    navLinks.forEach(link => {
-      link.addEventListener('click', ()=>{
-        nav.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e)=>{
-      if(!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('active')){
-        nav.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-    });
+    toggle.addEventListener('click', ()=> toggleNav());
   }
+
+  if(quickToggle && nav){
+    quickToggle.addEventListener('click', ()=> toggleNav());
+  }
+  
+  // Close menu when clicking on a link
+  navLinks.forEach(link => {
+    link.addEventListener('click', ()=> toggleNav(false));
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e)=>{
+    if(!nav.contains(e.target) && !toggle?.contains(e.target) && !quickToggle?.contains(e.target) && nav.classList.contains('active')){
+      toggleNav(false);
+    }
+  });
 })();
 
 // Header hide on scroll down, show on scroll up
-(function(){
-  const header = document.querySelector('.site-header');
-  if(!header) return;
-  
-  let lastScroll = 0;
-  const scrollThreshold = 100;
-  let ticking = false;
-  
-  function updateHeader() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Always show header at the top
-    if(currentScroll <= scrollThreshold){
-      header.classList.remove('hidden');
-      lastScroll = currentScroll;
-      ticking = false;
-      return;
-    }
-    
-    // Hide when scrolling down, show when scrolling up
-    if(currentScroll > lastScroll && currentScroll > scrollThreshold){
-      // Scrolling down
-      header.classList.add('hidden');
-    } else if(currentScroll < lastScroll){
-      // Scrolling up
-      header.classList.remove('hidden');
-    }
-    
-    lastScroll = currentScroll;
-    ticking = false;
+const header = document.querySelector('.site-header');
+const quickToggle = document.querySelector('.quick-nav-toggle');
+
+// Ensure header is always visible
+header?.classList.remove('hidden');
+
+window.addEventListener('scroll', function() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Keep header visible (no hide on scroll)
+  header?.classList.remove('hidden');
+
+  // Quick nav shows only when nav is open (optional helper)
+  if(quickToggle){
+    const navOpen = document.body.classList.contains('nav-open');
+    const shouldShow = navOpen || scrollTop > 120; // keep available when scrolled a bit
+    quickToggle.classList.toggle('show', shouldShow);
   }
-  
-  window.addEventListener('scroll', ()=>{
-    if(!ticking) {
-      window.requestAnimationFrame(updateHeader);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
+}, { passive: true });
