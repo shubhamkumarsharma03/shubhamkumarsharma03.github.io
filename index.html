@@ -15,10 +15,15 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="container">
+      <div class="container header-container">
         <a href="#" class="brand-logo">
           <img src="assets/logo.png" alt="Shubham Kumar Sharma" class="logo">
         </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav class="nav">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -33,7 +38,7 @@
     <main>
       <section class="hero">
         <div class="container">
-          <p class="hero-label">Full-Stack Developer | AWS AI & ML Scholar | IBM Cloud Intern</p>
+          <p class="hero-label">Backend Developer | AWS AI & ML Scholar | IBM Cloud Intern</p>
           <h2>Building Scalable Web & AI-Powered Applications</h2>
           <p class="hero-subtitle">Turning ideas into production-ready software with expertise in full-stack development, cloud architecture, and machine learning. Passionate about creating user-centric solutions that solve real-world problems.</p>
           <div class="social-links">
@@ -409,6 +414,39 @@
           const src = t.getAttribute('data-lightbox-src') || t.getAttribute('href');
           if(src){ e.preventDefault(); open(src); }
         });
+      })();
+
+      // Mobile menu toggle
+      (function(){
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.nav');
+        const navLinks = document.querySelectorAll('.nav a');
+        
+        if(toggle && nav){
+          toggle.addEventListener('click', ()=>{
+            const isActive = nav.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', isActive);
+            document.body.style.overflow = isActive ? 'hidden' : '';
+          });
+          
+          // Close menu when clicking on a link
+          navLinks.forEach(link => {
+            link.addEventListener('click', ()=>{
+              nav.classList.remove('active');
+              toggle.setAttribute('aria-expanded', 'false');
+              document.body.style.overflow = '';
+            });
+          });
+          
+          // Close menu when clicking outside
+          document.addEventListener('click', (e)=>{
+            if(!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('active')){
+              nav.classList.remove('active');
+              toggle.setAttribute('aria-expanded', 'false');
+              document.body.style.overflow = '';
+            }
+          });
+        }
       })();
     </script>
   </body>
