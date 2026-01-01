@@ -1,0 +1,36 @@
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Testimonials from './components/Testimonials';
+import Experience from './components/Experience';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
+import Lightbox from './components/Lightbox';
+import { LightboxProvider } from './context/LightboxContext';
+
+function App() {
+  return (
+    <LightboxProvider>
+      <div className="app">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+        <BackToTop />
+        <Lightbox />
+      </div>
+    </LightboxProvider>
+  );
+}
+
+export default App;
