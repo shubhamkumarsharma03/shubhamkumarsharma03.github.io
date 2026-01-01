@@ -144,7 +144,7 @@ const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
 const Experience = () => {
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = '//cdn.credly.com/assets/utilities/embed.js';
+        script.src = 'https://cdn.credly.com/assets/utilities/embed.js';
         script.async = true;
         document.body.appendChild(script);
 
@@ -182,6 +182,7 @@ const Experience = () => {
                             {CREDLY_BADGE_IDS.map(id => (
                                 <div key={id} className="badge-card">
                                     <div
+                                        className="credly-badge"
                                         data-iframe-width="150"
                                         data-iframe-height="270"
                                         data-share-badge-id={id}
