@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
+import './Navbar.css';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,15 +35,7 @@ const Navbar = () => {
             animate="visible"
             transition={{ duration: 0.5 }}
             variants={variants}
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass py-4' : 'bg-transparent py-6'
-                }`}
-            style={{
-                width: '100%',
-                backgroundColor: scrolled ? 'var(--card-bg)' : 'transparent',
-                backdropFilter: scrolled ? 'blur(10px)' : 'none',
-                borderBottom: scrolled ? '1px solid var(--glass-border)' : 'none',
-                padding: scrolled ? '1rem 0' : '1.5rem 0',
-            }}
+            className={`navbar-container ${scrolled ? 'scrolled' : 'transparent'}`}
         >
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Link
@@ -56,7 +49,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex gap-8" style={{ display: 'flex', gap: '2rem' }} id="desktop-menu">
+                <div className="desktop-menu" id="desktop-menu">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
@@ -64,7 +57,6 @@ const Navbar = () => {
                             smooth={true}
                             duration={300}
                             className="nav-link"
-                            style={{ cursor: 'pointer', fontWeight: '500' }}
                         >
                             {link.name}
                         </Link>
@@ -89,10 +81,9 @@ const Navbar = () => {
 
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="md:hidden text-white"
+                    className="mobile-toggle"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
-                    style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', display: 'none' }} // Hidden by default, shown via media query in css if I had tailwind, but doing inline style for logic
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -102,23 +93,13 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden glass"
-                        style={{
-                            overflow: 'hidden',
-                            position: 'absolute',
-                            top: '100%',
-                            left: 0,
-                            width: '100%',
-                            flexDirection: 'column',
-                            padding: '1rem',
-                            gap: '1rem',
-                            // display: 'flex' set in styles or dynamically
-                        }}
+                        initial={{ x: '-100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '-100%' }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                        className="mobile-menu-container"
                     >
-                        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div className="container" style={{ display: 'flex', flexDirection: 'column' }}>
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
@@ -126,7 +107,7 @@ const Navbar = () => {
                                     smooth={true}
                                     duration={300}
                                     onClick={() => setIsOpen(false)}
-                                    style={{ cursor: 'pointer', fontSize: '1.1rem', padding: '0.5rem 0' }}
+                                    className="mobile-nav-link"
                                 >
                                     {link.name}
                                 </Link>
@@ -135,10 +116,10 @@ const Navbar = () => {
                                 href="/assets/Shubham_Resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                className="mobile-nav-link"
                                 style={{
                                     color: 'var(--accent-color)',
                                     fontWeight: 'bold',
-                                    padding: '0.5rem 0'
                                 }}
                             >
                                 Resume
@@ -147,12 +128,6 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-            <style>{`
-        @media (max-width: 768px) {
-            #desktop-menu { display: none !important; }
-            button[aria-label="Toggle menu"] { display: block !important; }
-        }
-      `}</style>
         </motion.nav>
     );
 };

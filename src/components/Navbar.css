@@ -1,0 +1,104 @@
+/* Main Navbar Container */
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    padding: 1.5rem 0;
+}
+
+.navbar-container.scrolled {
+    padding: 1rem 0;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-container.transparent {
+    background: transparent;
+}
+
+/* Desktop Menu */
+.desktop-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1002;
+    /* Above the drawer so it can be used to close if needed */
+}
+
+/* Mobile Drawer */
+.mobile-menu-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 75%;
+    /* "Left side half page" approximation */
+    background: var(--bg-color);
+    /* Solid background for legibility */
+    border-right: 1px solid var(--glass-border);
+    flex-direction: column;
+    padding: 6rem 2rem 2rem;
+    /* Top padding to clear the logo/toggle area */
+    gap: 2rem;
+    z-index: 1001;
+    box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5);
+    transform: translateX(-100%);
+    /* Start off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* When active, slight adjustment if keeping it always in DOM, 
+   but Framer Motion handles the animation usually. 
+   We'll keep base styles here. frames-motion handles opacity/height/x usually.
+   But if using standard css classes: 
+*/
+
+.nav-link {
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+/* Mobile Link Styles */
+.mobile-nav-link {
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 0;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .mobile-menu-container {
+        display: flex;
+        transform: none;
+        /* Reset transform for Framer Motion to handle */
+    }
+}
