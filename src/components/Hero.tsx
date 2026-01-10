@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { ChevronRight, ArrowDown } from 'lucide-react';
 
+import CanvasBackground from './CanvasBackground';
+
 const Typewriter = ({ text }: { text: string[]; delay: number }) => {
     const [currentText, setCurrentText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
@@ -36,8 +38,9 @@ const Typewriter = ({ text }: { text: string[]; delay: number }) => {
 
 const Hero = () => {
     return (
-        <section id="hero" className="section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '0', position: 'relative' }}>
-            <div className="container">
+        <section id="hero" className="section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '0', position: 'relative', overflow: 'hidden' }}>
+            <CanvasBackground />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{ maxWidth: '800px' }}>
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -124,7 +127,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 1 }}
-                style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)' }}
+                style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}
             >
                 <ArrowDown className="animate-bounce" size={24} style={{ color: 'var(--text-secondary)' }} />
             </motion.div>
