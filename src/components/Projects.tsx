@@ -4,7 +4,7 @@ import { Github, CheckCircle2, Layers, Image as ImageIcon } from 'lucide-react';
 import { useLightbox } from '../context/LightboxContext';
 
 const projects = [
-    
+
     {
         title: 'Intelligent Document Querying System',
         description: 'A robust GenAI RAG solution allowing users to query vast document repositories via natural language. Leverages AWS Bedrock for LLMs, Aurora Postgres Serverless for vector indexing, and S3 for storage. Built with Terraform (IaC) and Python, it simulates a real-world enterprise pipeline secured for sensitive data.',
@@ -21,38 +21,38 @@ const projects = [
         featured: true
     },
     {
-    title: 'Quantum Circuit Simulator using Qiskit',
-    description: 'An educational and scalable quantum circuit simulator built with a professional 5-layer architecture. It separates presentation, application logic, and quantum execution, supporting both CLI and GUI modes. The system leverages Qiskit for execution and Matplotlib for visualization, offering extended gate support and built-in algorithm presets.',
-    features: [
-        'Professional 5-Layer Architecture (SOLID principles)',
-        'Dual Interface: CLI and Enhanced Tkinter GUI',
-        'Extended Gate Library (S, T, RX, RY, RZ, SWAP)',
-        'Built-in Algorithm Presets (Bell State, GHZ, Teleportation)',
-        'Embedded Matplotlib visualizations for circuits and results'
-    ],
-    tags: ['Python', 'Qiskit', 'Tkinter', 'Quantum Computing', 'Simulation'],
-    image: '/assets/Quantum-Circuit-Simulator.png',
-    diagram: '/assets/arch-quantum-sim.png',
-    link: 'https://github.com/shubhamkumarsharma03/Quantum-Circuit-Simulator-using-Qiskit',
-    featured: true
+        title: 'Quantum Circuit Simulator using Qiskit',
+        description: 'An educational and scalable quantum circuit simulator built with a professional 5-layer architecture. It separates presentation, application logic, and quantum execution, supporting both CLI and GUI modes. The system leverages Qiskit for execution and Matplotlib for visualization, offering extended gate support and built-in algorithm presets.',
+        features: [
+            'Professional 5-Layer Architecture (SOLID principles)',
+            'Dual Interface: CLI and Enhanced Tkinter GUI',
+            'Extended Gate Library (S, T, RX, RY, RZ, SWAP)',
+            'Built-in Algorithm Presets (Bell State, GHZ, Teleportation)',
+            'Embedded Matplotlib visualizations for circuits and results'
+        ],
+        tags: ['Python', 'Qiskit', 'Tkinter', 'Quantum Computing', 'Simulation'],
+        image: '/assets/Quantum-Circuit-Simulator.png',
+        diagram: '/assets/arch-quantum-sim.png',
+        link: 'https://github.com/shubhamkumarsharma03/Quantum-Circuit-Simulator-using-Qiskit',
+        featured: true
     },
     {
-    title: 'Data Structures Visualizer',
-    description: 'An interactive, animation-driven educational application built with JavaFX that provides step-by-step visualizations of fundamental data structures. Features smooth animations, color-coded feedback, and adjustable playback speeds to help users understand how core data structures work internally. Implements strict MVC architecture with clean separation between model, view, and controller layers.',
-    features: [
-        'Interactive visualizations for 6 major data structures (Array, Stack, Queue, LinkedList, BST, Graph)',
-        'Smooth JavaFX animations with adjustable speed (0.5x to 2.0x)',
-        'Color-coded visual feedback for operations (insert, delete, found, error states)',
-        'Strict MVC architecture with zero dependencies between layers',
-        'Real-time pseudocode & operation explanations in status panel',
-        'Comprehensive input validation with helpful error messages',
-        'Support for core operations: insertion, deletion, search, traversals (BFS/DFS)'
-    ],
-    tags: ['JavaFX', 'Data Structures', 'Java', 'Educational', 'Animation', 'MVC Architecture', 'Maven'],
-    image: '/assets/data-structures-visualizer.png',
-    diagram: '/assets/arch-dsvisualizer.png',
-    link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
-    featured: false
+        title: 'Data Structures Visualizer',
+        description: 'An interactive, animation-driven educational application built with JavaFX that provides step-by-step visualizations of fundamental data structures. Features smooth animations, color-coded feedback, and adjustable playback speeds to help users understand how core data structures work internally. Implements strict MVC architecture with clean separation between model, view, and controller layers.',
+        features: [
+            'Interactive visualizations for 6 major data structures (Array, Stack, Queue, LinkedList, BST, Graph)',
+            'Smooth JavaFX animations with adjustable speed (0.5x to 2.0x)',
+            'Color-coded visual feedback for operations (insert, delete, found, error states)',
+            'Strict MVC architecture with zero dependencies between layers',
+            'Real-time pseudocode & operation explanations in status panel',
+            'Comprehensive input validation with helpful error messages',
+            'Support for core operations: insertion, deletion, search, traversals (BFS/DFS)'
+        ],
+        tags: ['JavaFX', 'Data Structures', 'Java', 'Educational', 'Animation', 'MVC Architecture', 'Maven'],
+        image: '/assets/data-structures-visualizer.png',
+        diagram: '/assets/arch-dsvisualizer.png',
+        link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
+        featured: false
     },
     {
         title: 'AI Email Writer',
@@ -69,7 +69,7 @@ const projects = [
         link: 'https://github.com/shubhamkumarsharma03/AI-email-writer',
         featured: false
     },
-    
+
     {
         title: 'Expense Tracker',
         description: 'An upcoming cross-platform mobile financial manager currently in the initial development phase. The project foundation has been established using React Native and Expo, with a roadmap to implement real-time tracking and visual analytics.',
