@@ -6,6 +6,22 @@ import { useLightbox } from '../context/LightboxContext';
 const projects = [
 
     {
+    title: 'Web-Based Data Structures & Algorithms Visualizer',
+    description: 'An interactive educational web application designed to help students and developers understand the internal working of fundamental data structures and algorithms through step-by-step visual animations. Built with React and TypeScript, it features a clean modular architecture that strictly separates algorithm logic from the visualization layer.',
+    features: [
+        'Step-by-step visual animations of algorithms',
+        'Interactive playback controls (play, pause, step, speed)',
+        'Modular architecture separating logic from visualization',
+        'Support for Arrays, Linked Lists, Sorting, Trees, and Graphs'
+    ],
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Algorithms', 'Education'],
+    image: '/assets/data-structures-visualizer.png',
+    diagram: '/assets/arch-dsvisualizer.png',
+    link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
+    featured: true
+    },
+
+    {
         title: 'Intelligent Document Querying System',
         description: 'A robust GenAI RAG solution allowing users to query vast document repositories via natural language. Leverages AWS Bedrock for LLMs, Aurora Postgres Serverless for vector indexing, and S3 for storage. Built with Terraform (IaC) and Python, it simulates a real-world enterprise pipeline secured for sensitive data.',
         features: [
@@ -36,24 +52,7 @@ const projects = [
         link: 'https://github.com/shubhamkumarsharma03/Quantum-Circuit-Simulator-using-Qiskit',
         featured: true
     },
-    {
-        title: 'Data Structures Visualizer',
-        description: 'An interactive, animation-driven educational application built with JavaFX that provides step-by-step visualizations of fundamental data structures. Features smooth animations, color-coded feedback, and adjustable playback speeds to help users understand how core data structures work internally. Implements strict MVC architecture with clean separation between model, view, and controller layers.',
-        features: [
-            'Interactive visualizations for 6 major data structures (Array, Stack, Queue, LinkedList, BST, Graph)',
-            'Smooth JavaFX animations with adjustable speed (0.5x to 2.0x)',
-            'Color-coded visual feedback for operations (insert, delete, found, error states)',
-            'Strict MVC architecture with zero dependencies between layers',
-            'Real-time pseudocode & operation explanations in status panel',
-            'Comprehensive input validation with helpful error messages',
-            'Support for core operations: insertion, deletion, search, traversals (BFS/DFS)'
-        ],
-        tags: ['JavaFX', 'Data Structures', 'Java', 'Educational', 'Animation', 'MVC Architecture', 'Maven'],
-        image: '/assets/data-structures-visualizer.png',
-        diagram: '/assets/arch-dsvisualizer.png',
-        link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
-        featured: false
-    },
+    
     {
         title: 'AI Email Writer',
         description: 'A productivity tool utilizing Google\'s Gemini API to draft professional emails. It features a React frontend for real-time preview and a Spring Boot backend that orchestrates prompt engineering and API communication.',
