@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, CheckCircle2, Layers, Image as ImageIcon } from 'lucide-react';
+import { Github, CheckCircle2, Layers, Image as ImageIcon, ExternalLink } from 'lucide-react';
 import { useLightbox } from '../context/LightboxContext';
 
 const projects = [
@@ -18,6 +18,7 @@ const projects = [
     image: '/assets/data-structures-visualizer.png',
     diagram: '/assets/arch-dsvisualizer.png',
     link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
+    demo: 'https://datastructuresvisualizer.vercel.app/',
     featured: true
     },
 
@@ -165,9 +166,21 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                     ))}
                 </div>
 
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="source-btn">
-                    <Github size={18} /> Source Code
-                </a>
+                <div className="project-links">
+                    {project.demo && (
+                        <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="live-btn"
+                        >
+                            <ExternalLink size={18} /> Live Demo
+                        </a>
+                    )}
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="source-btn">
+                        <Github size={18} /> Source Code
+                    </a>
+                </div>
             </div>
 
             <style>{`
@@ -305,6 +318,30 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                     border-radius: 20px;
                     font-size: 0.85rem;
                     color: var(--text-secondary);
+                }
+
+                .project-links {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+                .live-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    background: var(--accent-color);
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 600;
+                    padding: 0.6rem 1.3rem;
+                    border-radius: 999px;
+                    transition: opacity 0.3s;
+                }
+
+                .live-btn:hover {
+                    opacity: 0.85;
                 }
 
                 .source-btn {
