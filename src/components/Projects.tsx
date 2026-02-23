@@ -18,7 +18,7 @@ const projects = [
     image: '/assets/data-structures-visualizer.png',
     diagram: '/assets/arch-dsvisualizer.png',
     link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
-    demo: 'https://datastructuresvisualizer.vercel.app/',
+    demo: 'https://dsviz.vercel.app/',
     featured: true
     },
 
