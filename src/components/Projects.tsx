@@ -17,8 +17,8 @@ const projects = [
     tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Algorithms', 'Education'],
     image: '/assets/data-structures-visualizer.png',
     diagram: '/assets/arch-dsvisualizer.png',
-    link: 'https://github.com/shubhamkumarsharma03/Data-Structures-Visualizer',
-    demo: 'https://dsviz.vercel.app/',
+    link: 'https://github.com/dsviz/Data-Structures-Visualizer',
+    demo: 'https://dsviz.app/',
     featured: true
     },
 
