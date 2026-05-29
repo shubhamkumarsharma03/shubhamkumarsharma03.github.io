@@ -18,8 +18,7 @@ const About = () => {
               <span className="card-label">MORE ABOUT ME</span>
               <h4 className="card-title">My Journey</h4>
               <p>
-                I'm a passionate Full Stack Developer focused on building real-world, scalable solutions using modern technologies.
-                Currently pursuing my B.Tech in Information Technology, I combine academic knowledge with hands-on experience to create impactful digital products.
+                I’m a full‑stack developer focused on building practical, scalable products with cloud and AI. I’m pursuing a B.Tech in Information Technology and recently completed the Udacity x AWS AI Practitioner Nanodegree, where I built real-world AI apps using PartyRock and AWS services.
               </p>
               <p style={{ marginTop: '1rem' }}>
                 My technical journey spans full-stack development, cloud computing, and artificial intelligence.
@@ -29,12 +28,12 @@ const About = () => {
 
             {/* Stats Cards */}
             <div className="bento-card stat-card glass">
-              <div className="stat-number gradient-text">6</div>
-              <div className="stat-label">MONTHS<br />EXPERIENCE</div>
+              <div className="stat-number gradient-text">1.5</div>
+              <div className="stat-label">YEARS<br />EXPERIENCE</div>
             </div>
 
             <div className="bento-card stat-card glass">
-              <div className="stat-number gradient-text">5+</div>
+              <div className="stat-number gradient-text">5</div>
               <div className="stat-label">PROJECTS<br />COMPLETED</div>
             </div>
 

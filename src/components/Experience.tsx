@@ -14,34 +14,43 @@ const CREDLY_BADGE_IDS = [
 
 const experiences = [
     {
-        title: 'Foundation of Generative AI Nanodegree',
-        organization: 'Udacity',
-        date: 'February 2025',
-        description: 'A comprehensive program exploring the fundamental principles of Generative AI, Deep Learning, and Foundation Models. The curriculum covered practical applications of cutting-edge techniques, including parameter-efficient fine-tuning (PEFT), enabling the adaptation of massive foundation models for specific, real-world use cases.',
+        title: 'Backend Development Intern',
+        organization: 'InnerWhispers Mental Health Services',
+        date: 'May 2026 — August 2026',
+        description: 'Supporting server-side development for InnerWhispers digital platforms, focused on reliable APIs, database management, and clean backend architecture for mental health services.',
         keyTakeaways: [
-            'Generative AI Fundamentals & Deep Learning',
-            'Advanced Parameter-Efficient Fine-Tuning (PEFT)',
-            'Building & Adapting Massive Foundation Models',
-            'Real-world AI Application Development'
+            'Build and maintain REST APIs and backend logic',
+            'Design and manage SQL/NoSQL databases',
+            'Integrate frontend components with backend services',
+            'Debug, optimize, and document backend modules',
+            'Deliver weekly progress updates and API documentation'
         ],
-        image: '/assets/udacity-genai-cert.png',
-        link: 'https://www.udacity.com/certificate/e/e6a78158-b7bc-11ef-9923-77485672cd17',
-        type: 'Certification'
+        image: '/assets/OfferLetter-1.png',
+        badges: [
+            '/assets/OfferLetter-2.png'
+        ],
+        link: null,
+        type: 'Internship'
     },
     {
-        title: 'Introducing Generative AI with AWS',
-        organization: 'Udacity',
-        date: 'July 2025',
-        description: 'An in-depth exploration of generative AI focused on foundational concepts and real-world applications. Covered Large Language Models (LLMs), transformer architectures, and ethical AI deployment, with hands-on practice using AWS tools.',
+        title: 'AWS AI Practitioner Challenge 2026',
+        organization: 'Udacity x AWS',
+        date: 'May 2026',
+        description: 'Completed an applied program covering core AI/ML concepts, generative AI technologies, real-world use cases, and hands-on exploration of AWS AI/ML services and tools. Focused on selecting appropriate AI/ML solutions and implementing them inside the AWS ecosystem.',
         keyTakeaways: [
-            'Generative AI & LLM Foundations',
-            'Transformer Architectures & Prompt Engineering',
-            'AWS Generative AI Tools & Applications',
-            'Ethical AI & Responsible Deployment'
+            'AI/ML Fundamentals & Strategy on AWS',
+            'Generative AI (NLP, Computer Vision) Use Cases',
+            'Service Selection Across AWS AI/ML Stack',
+            'Project: Study Session Planner Pro (PartyRock)',
+            'Project: Delhi AQI Data Analysis (PartyRock)'
         ],
-        image: '/assets/udacity-genai-aws-cert.png',
-        link: 'https://www.udacity.com/certificate/e/ad8ffe4a-3c3c-11f0-9c0d-23be28a9dd3f',
-        type: 'Course / Certification'
+        image: '/assets/AWS-AI-Practitioner.png',
+        badges: [
+            '/assets/AWS-AI-Practitioner-Badge.png',
+            '/assets/Project-2-Completion-Badge.jpg'
+        ],
+        link: 'https://www.udacity.com/certificate/e/6acb0338-280f-11f1-81d3-17a753beb8d6',
+        type: 'Certification'
     },
     {
         title: 'AWS AI & ML Scholar',
@@ -59,6 +68,37 @@ const experiences = [
         link: 'https://www.udacity.com/certificate/e/ad62845a-8152-11f0-b893-775bcb74b483',
         type: 'Scholarship / Training'
     },
+    {
+        title: 'Foundation of Generative AI Nanodegree',
+        organization: 'Udacity',
+        date: 'February 2025',
+        description: 'A comprehensive program exploring the fundamental principles of Generative AI, Deep Learning, and Foundation Models. The curriculum covered practical applications of cutting-edge techniques, including parameter-efficient fine-tuning (PEFT), enabling the adaptation of massive foundation models for specific, real-world use cases.',
+        keyTakeaways: [
+            'Generative AI Fundamentals & Deep Learning',
+            'Advanced Parameter-Efficient Fine-Tuning (PEFT)',
+            'Building & Adapting Massive Foundation Models',
+            'Real-world AI Application Development'
+        ],
+        image: '/assets/udacity-genai-cert.png',
+        link: 'https://www.udacity.com/certificate/e/e6a78158-b7bc-11ef-9923-77485672cd17',
+        type: 'Certification / Nanodegree'
+    },
+    {
+        title: 'Introducing Generative AI with AWS',
+        organization: 'Udacity',
+        date: 'July 2025',
+        description: 'An in-depth exploration of generative AI focused on foundational concepts and real-world applications. Covered Large Language Models (LLMs), transformer architectures, and ethical AI deployment, with hands-on practice using AWS tools.',
+        keyTakeaways: [
+            'Generative AI & LLM Foundations',
+            'Transformer Architectures & Prompt Engineering',
+            'AWS Generative AI Tools & Applications',
+            'Ethical AI & Responsible Deployment'
+        ],
+        image: '/assets/udacity-genai-aws-cert.png',
+        link: 'https://www.udacity.com/certificate/e/ad8ffe4a-3c3c-11f0-9c0d-23be28a9dd3f',
+        type: 'Course / Certification'
+    },
+
     {
         title: 'AI & Cloud Internship',
         organization: 'Edunet Foundation (IBM Cloud)',
@@ -130,6 +170,22 @@ const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
                         </div>
                     ))}
                 </div>
+
+                {item.badges?.length > 0 && (
+                    <div className="experience-badges">
+                        {item.badges.map((badge: string, i: number) => (
+                            <button
+                                key={i}
+                                className="badge-thumb"
+                                type="button"
+                                onClick={() => openLightbox(badge)}
+                                aria-label={`Open badge ${i + 1}`}
+                            >
+                                <img src={badge} alt="Award badge" loading="lazy" />
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                 {item.link && (
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className="verify-btn">
@@ -323,6 +379,34 @@ const Experience = () => {
                     grid-template-columns: 1fr;
                     gap: 1rem;
                     margin-bottom: 2rem;
+                }
+                .experience-badges {
+                    display: flex;
+                    gap: 0.75rem;
+                    flex-wrap: wrap;
+                    margin-bottom: 1.75rem;
+                }
+
+                .badge-thumb {
+                    border: 1px solid rgba(255,255,255,0.1);
+                    border-radius: 12px;
+                    background: rgba(255,255,255,0.03);
+                    padding: 6px;
+                    cursor: pointer;
+                    transition: transform 0.2s ease, border-color 0.2s ease;
+                }
+
+                .badge-thumb img {
+                    width: 88px;
+                    height: 88px;
+                    object-fit: cover;
+                    border-radius: 8px;
+                    display: block;
+                }
+
+                .badge-thumb:hover {
+                    transform: translateY(-2px);
+                    border-color: rgba(124, 58, 237, 0.4);
                 }
 
                 .feature-item {

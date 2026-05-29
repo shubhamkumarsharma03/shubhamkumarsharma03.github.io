@@ -12,26 +12,31 @@ const skillsData = {
     Backend: [
         { name: 'Node.js', icon: 'Node.js.png' },
         { name: 'Spring Boot', icon: 'Spring.png' },
-        { name: 'Java', icon: 'Java.png' },
         { name: 'Python', icon: 'Python.png' },
     ],
     Database: [
-        { name: 'MongoDB', icon: 'MongoDB.png' },
         { name: 'MySQL', icon: 'MySQL.png' },
         { name: 'PostgreSQL', icon: 'PostgresSQL.png' },
     ],
     Cloud: [
         { name: 'AWS', icon: 'AWS.png' },
         { name: 'IBM Cloud', icon: 'IBM-Cloud.png' },
+        { name: 'Terraform', icon: 'HashiCorp-Terraform.png' },
         { name: 'Docker', icon: 'Docker.png' },
         { name: 'Git', icon: 'Git.png' },
         { name: 'GitHub', icon: 'GitHub.png' },
     ],
-    Tools: [
-        { name: 'VS Code', icon: 'Visual-Studio-Code-(VS-Code).png' },
-        { name: 'Postman', icon: 'Postman.png' },
-        { name: 'LeetCode', icon: 'LeetCode.png' },
-    ]
+    'AWS Services': [
+        { name: 'Amazon Bedrock', icon: 'AWS.png' },
+        { name: 'PartyRock (Bedrock Playground)', icon: 'AWS.png' },
+        { name: 'Amazon Aurora (PostgreSQL Serverless)', icon: 'AWS.png' },
+        { name: 'Amazon S3', icon: 'AWS.png' },
+        { name: 'AWS Lambda', icon: 'AWS.png' },
+        { name: 'Amazon SageMaker', icon: 'AWS.png' },
+        { name: 'Amazon Rekognition', icon: 'AWS.png' },
+        { name: 'Amazon Comprehend', icon: 'AWS.png' },
+        { name: 'AWS Glue', icon: 'AWS.png' },
+    ],
 };
 
 const Skills = () => {
@@ -61,11 +66,13 @@ const Skills = () => {
                                             transition={{ delay: index * 0.1 + idx * 0.05 }}
                                             viewport={{ once: true }}
                                         >
-                                            <img
-                                                src={`/tech-stack-icons/${skill.icon}`}
-                                                alt={skill.name}
-                                                style={{ width: '48px', height: '48px', objectFit: 'contain', marginBottom: '0.5rem' }}
-                                            />
+                                            {category !== 'AWS Services' && (
+                                                <img
+                                                    src={`/tech-stack-icons/${skill.icon}`}
+                                                    alt={skill.name}
+                                                    style={{ width: '48px', height: '48px', objectFit: 'contain', marginBottom: '0.5rem' }}
+                                                />
+                                            )}
                                             <span>{skill.name}</span>
                                         </motion.div>
                                     ))}

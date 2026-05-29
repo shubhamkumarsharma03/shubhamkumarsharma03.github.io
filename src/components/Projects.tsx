@@ -5,6 +5,7 @@ import { useLightbox } from '../context/LightboxContext';
 
 const projects = [
 
+
     {
     title: 'Web-Based Data Structures & Algorithms Visualizer',
     description: 'An interactive educational web application designed to help students and developers understand the internal working of fundamental data structures and algorithms through step-by-step visual animations. Built with React and TypeScript, it features a clean modular architecture that strictly separates algorithm logic from the visualization layer.',
@@ -36,6 +37,23 @@ const projects = [
         diagram: '/assets/arch-doc-query-real.jpg',
         link: 'https://github.com/shubhamkumarsharma03/Intelligent-Document-Querying-System',
         featured: true
+    },
+    {
+        title: 'Study Session Planner Pro (PartyRock)',
+        description: 'A smart study session planner that builds personalized schedules based on subject, study time, difficulty, and learning goals. It generates a structured plan, time management strategies, and productivity tips for focused study sessions.',
+        features: [
+            'Personalized study plans based on time and difficulty',
+            'Goal-driven session structure and checkpoints',
+            'Built with PartyRock input/output widgets',
+            'Reusable, shareable planning workflow'
+        ],
+        tags: ['PartyRock', 'AWS', 'Generative AI', 'Productivity'],
+        image: '/assets/Study-Session-Planner-Pro.png',
+        diagram: null,
+        link: 'https://partyrock.aws/u/shubhamsharma/m4pPY1lDz/Study-Session-Planner-Pro',
+        linkIsExternal: true,
+        sourceLabel: 'Open App',
+        featured: false
     },
     {
         title: 'Quantum Circuit Simulator using Qiskit',
@@ -70,22 +88,7 @@ const projects = [
         featured: false
     },
 
-    {
-        title: 'Expense Tracker',
-        description: 'An upcoming cross-platform mobile financial manager currently in the initial development phase. The project foundation has been established using React Native and Expo, with a roadmap to implement real-time tracking and visual analytics.',
-        features: [
-            'Initial Setup: React Native & Expo environment',
-            'Planned: Real-time Firebase synchronization',
-            'Planned: Interactive financial charting',
-            'Planned: Secure user authentication'
-        ],
-        tags: ['React Native', 'Expo', 'TypeScript', 'Firebase'],
-        image: '/assets/expense-tracker.png',
-        diagram: null,
-        link: 'https://github.com/shubhamkumarsharma03/expanse-tracker',
-        featured: false,
-        status: 'In Development'
-    }
+
 ];
 
 const ProjectCard = ({ project, index }: { project: any; index: number }) => {
@@ -178,7 +181,8 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                         </a>
                     )}
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="source-btn">
-                        <Github size={18} /> Source Code
+                        {project.linkIsExternal ? <ExternalLink size={18} /> : <Github size={18} />}
+                        {project.sourceLabel ?? 'Source Code'}
                     </a>
                 </div>
             </div>
