@@ -1,28 +1,25 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, CheckCircle2, Layers, Image as ImageIcon, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, CheckCircle2, ExternalLink, Image as ImageIcon, Layers } from 'lucide-react';
 import { useLightbox } from '../context/LightboxContext';
 
 const projects = [
-
-
     {
-    title: 'Web-Based Data Structures & Algorithms Visualizer',
-    description: 'An interactive educational web application designed to help students and developers understand the internal working of fundamental data structures and algorithms through step-by-step visual animations. Built with React and TypeScript, it features a clean modular architecture that strictly separates algorithm logic from the visualization layer.',
-    features: [
-        'Step-by-step visual animations of algorithms',
-        'Interactive playback controls (play, pause, step, speed)',
-        'Modular architecture separating logic from visualization',
-        'Support for Arrays, Linked Lists, Sorting, Trees, and Graphs'
-    ],
-    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Algorithms', 'Education'],
-    image: '/assets/data-structures-visualizer.png',
-    diagram: '/assets/arch-dsvisualizer.png',
-    link: 'https://github.com/dsviz/Data-Structures-Visualizer',
-    demo: 'https://dsviz.app/',
-    featured: true
+        title: 'Web-Based Data Structures & Algorithms Visualizer',
+        description: 'An interactive educational web application designed to help students and developers understand the internal working of fundamental data structures and algorithms through step-by-step visual animations. Built with React and TypeScript, it features a clean modular architecture that strictly separates algorithm logic from the visualization layer.',
+        features: [
+            'Step-by-step visual animations of algorithms',
+            'Interactive playback controls (play, pause, step, speed)',
+            'Modular architecture separating logic from visualization',
+            'Support for Arrays, Linked Lists, Sorting, Trees, and Graphs'
+        ],
+        tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Algorithms', 'Education'],
+        image: '/assets/data-structures-visualizer.png',
+        diagram: '/assets/arch-dsvisualizer.png',
+        link: 'https://github.com/dsviz/Data-Structures-Visualizer',
+        demo: 'https://dsviz.app/',
+        featured: true
     },
-
     {
         title: 'Intelligent Document Querying System',
         description: 'A robust GenAI RAG solution allowing users to query vast document repositories via natural language. Leverages AWS Bedrock for LLMs, Aurora Postgres Serverless for vector indexing, and S3 for storage. Built with Terraform (IaC) and Python, it simulates a real-world enterprise pipeline secured for sensitive data.',
@@ -71,7 +68,6 @@ const projects = [
         link: 'https://github.com/shubhamkumarsharma03/Quantum-Circuit-Simulator-using-Qiskit',
         featured: true
     },
-    
     {
         title: 'AI Email Writer',
         description: 'A productivity tool utilizing Google\'s Gemini API to draft professional emails. It features a React frontend for real-time preview and a Spring Boot backend that orchestrates prompt engineering and API communication.',
@@ -84,11 +80,8 @@ const projects = [
         tags: ['React', 'Spring Boot', 'Gemini API', 'Java'],
         image: '/assets/ai-email-writer.png',
         diagram: '/assets/arch-email-writer.png',
-        link: 'https://github.com/shubhamkumarsharma03/AI-email-writer',
         featured: false
-    },
-
-
+    }
 ];
 
 const ProjectCard = ({ project, index }: { project: any; index: number }) => {
@@ -96,47 +89,36 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
     const { openLightbox } = useLightbox();
     const isEven = index % 2 === 0;
 
+    const currentImage = showDiagram && project.diagram ? project.diagram : project.image;
+
     return (
-        <motion.div
-            className={`project-row ${isEven ? 'row-normal' : 'row-reverse'} glass`}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-        >
+        <div className={`project-row ${isEven ? 'row-normal' : 'row-reverse'} glass`}>
             {/* Media Section */}
             <div className="project-media">
-                <div className="media-container">
-                    <AnimatePresence mode='wait'>
-                        <motion.img
-                            key={showDiagram ? 'diagram' : 'image'}
-                            src={showDiagram && project.diagram ? project.diagram : project.image}
-                            alt={project.title}
-                            className="project-img"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            onClick={() => openLightbox(showDiagram && project.diagram ? project.diagram : project.image)}
-                            style={{ cursor: 'pointer' }}
-                        />
-                    </AnimatePresence>
+                <div className="media-container" style={{ position: 'relative' }}>
+                    <img
+                        src={currentImage}
+                        alt={project.title}
+                        className="project-img"
+                        onClick={() => openLightbox(currentImage)}
+                        style={{ cursor: 'pointer' }}
+                    />
 
                     {project.diagram && (
-                        <div className="media-controls">
+                        <div className="media-controls no-print">
                             <button
                                 className={`control-btn ${!showDiagram ? 'active' : ''}`}
                                 onClick={() => setShowDiagram(false)}
                                 aria-label="Show Screenshot"
                             >
-                                <ImageIcon size={16} /> UI
+                                <ImageIcon size={14} /> UI
                             </button>
                             <button
                                 className={`control-btn ${showDiagram ? 'active' : ''}`}
                                 onClick={() => setShowDiagram(true)}
                                 aria-label="Show Architecture"
                             >
-                                <Layers size={16} /> Arch
+                                <Layers size={14} /> ARCH
                             </button>
                         </div>
                     )}
@@ -147,7 +129,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
             <div className="project-info">
                 <div className="info-header">
                     <span className="project-type">
-                        {project.status === 'In Development' ? '🚧 In Development' : (project.featured ? 'Featured Architecture' : 'Full Stack Application')}
+                        {project.status === 'In Development' ? '[ 🚧 IN_DEVELOPMENT ]' : (project.featured ? '[ FEATURED_ARCHITECTURE ]' : '[ FULL_STACK_SYSTEM ]')}
                     </span>
                     <h3 className="project-title">{project.title}</h3>
                 </div>
@@ -157,7 +139,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                 <div className="features-list">
                     {project.features.map((feature: string, i: number) => (
                         <div key={i} className="feature-item">
-                            <CheckCircle2 size={16} className="feature-icon" />
+                            <CheckCircle2 size={15} className="feature-icon" />
                             <span>{feature}</span>
                         </div>
                     ))}
@@ -165,7 +147,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 
                 <div className="tech-stack">
                     {project.tags.map((tag: string) => (
-                        <span key={tag} className="tech-pill">{tag}</span>
+                        <span key={tag} className="tech-pill">[{tag}]</span>
                     ))}
                 </div>
 
@@ -177,12 +159,12 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                             rel="noopener noreferrer"
                             className="live-btn"
                         >
-                            <ExternalLink size={18} /> Live Demo
+                            <ExternalLink size={16} /> LIVE_DEMO
                         </a>
                     )}
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="source-btn">
-                        {project.linkIsExternal ? <ExternalLink size={18} /> : <Github size={18} />}
-                        {project.sourceLabel ?? 'Source Code'}
+                        {project.linkIsExternal ? <ExternalLink size={16} /> : <Github size={16} />}
+                        {project.sourceLabel ? project.sourceLabel.toUpperCase().replace(' ', '_') : 'SOURCE_CODE'}
                     </a>
                 </div>
             </div>
@@ -192,18 +174,22 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                     display: flex;
                     flex-direction: column;
                     gap: 2rem;
-                    padding: 2rem;
-                    margin-bottom: 4rem;
-                    border-radius: 20px;
-                    border: 1px solid var(--glass-border);
-                    background: rgba(255, 255, 255, 0.03);
+                    padding: 2.2rem;
+                    margin-bottom: 4.5rem;
+                    border-radius: 4px;
+                    background: rgba(255, 255, 255, 0.7);
+                    transition: border-color 0.3s;
+                }
+                
+                .project-row:hover {
+                    border-color: var(--accent-color);
                 }
 
                 @media (min-width: 992px) {
                     .project-row {
                         flex-direction: row;
                         align-items: center;
-                        gap: 4rem;
+                        gap: 3.5rem;
                         padding: 3rem;
                     }
                     .row-reverse {
@@ -216,11 +202,12 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 
                 .media-container {
                     position: relative;
-                    border-radius: 12px;
+                    border-radius: 2px;
                     overflow: hidden;
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    box-shadow: 4px 4px 15px rgba(15, 45, 89, 0.08);
                     aspect-ratio: 16/9;
-                    background: #111;
+                    background: #fdfbf7;
+                    border: 1px solid var(--border-color);
                 }
 
                 .project-img {
@@ -231,145 +218,161 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 
                 .media-controls {
                     position: absolute;
-                    bottom: 1rem;
+                    bottom: 0.75rem;
                     left: 50%;
                     transform: translateX(-50%);
                     display: flex;
-                    background: rgba(0,0,0,0.8);
-                    padding: 4px;
-                    border-radius: 30px;
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 3px;
+                    border-radius: 4px;
                     gap: 4px;
-                    border: 1px solid rgba(255,255,255,0.1);
+                    border: 1px solid var(--border-color);
+                    box-shadow: 2px 2px 5px rgba(15, 45, 89, 0.15);
+                    z-index: 10;
                 }
 
                 .control-btn {
                     display: flex;
                     align-items: center;
-                    gap: 6px;
-                    padding: 6px 12px;
-                    border-radius: 20px;
+                    gap: 5px;
+                    padding: 5px 10px;
+                    border-radius: 2px;
                     border: none;
                     background: transparent;
-                    color: #888;
-                    font-size: 0.75rem;
-                    font-weight: 600;
+                    color: var(--text-secondary);
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.7rem;
+                    font-weight: 700;
                     cursor: pointer;
-                    transition: all 0.3s;
+                    transition: all 0.2s;
                 }
 
                 .control-btn.active {
-                    background: var(--accent-color);
-                    color: white;
+                    background: var(--text-primary);
+                    color: var(--bg-color);
                 }
 
                 .control-btn:hover:not(.active) {
-                    color: white;
+                    color: var(--accent-color);
                 }
 
                 .project-type {
                     color: var(--accent-color);
-                    font-size: 0.8rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.75rem;
+                    font-weight: bold;
+                    letter-spacing: 0.05em;
                 }
 
                 .project-title {
-                    font-size: 2rem;
-                    margin: 0.5rem 0 1.5rem;
-                    color: white;
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-size: 1.8rem;
+                    margin: 0.4rem 0 1.2rem;
+                    color: var(--text-primary);
+                    font-weight: 700;
                 }
 
                 .project-desc {
                     color: var(--text-secondary);
-                    line-height: 1.7;
-                    margin-bottom: 2rem;
-                    font-size: 1.05rem;
+                    line-height: 1.6;
+                    margin-bottom: 1.5rem;
+                    font-size: 0.95rem;
                 }
 
                 .features-list {
                     display: grid;
                     grid-template-columns: 1fr;
-                    gap: 1rem;
-                    margin-bottom: 2rem;
+                    gap: 0.75rem;
+                    margin-bottom: 1.5rem;
                 }
 
                 .feature-item {
                     display: flex;
                     align-items: flex-start;
-                    gap: 10px;
-                    font-size: 0.95rem;
-                    color: #ddd;
+                    gap: 8px;
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
                 }
 
                 .feature-icon {
-                    color: var(--accent-color);
-                    margin-top: 4px;
+                    color: var(--text-primary);
+                    margin-top: 2px;
                     flex-shrink: 0;
                 }
 
                 .tech-stack {
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 0.75rem;
+                    gap: 0.5rem;
                     margin-bottom: 2rem;
                 }
 
                 .tech-pill {
-                    background: rgba(255,255,255,0.05);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    padding: 0.4rem 1rem;
-                    border-radius: 20px;
-                    font-size: 0.85rem;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.75rem;
                     color: var(--text-secondary);
+                    font-weight: 600;
                 }
 
                 .project-links {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
-                    gap: 1rem;
+                    gap: 1.25rem;
                 }
 
                 .live-btn {
                     display: inline-flex;
                     align-items: center;
                     gap: 0.5rem;
-                    background: var(--accent-color);
-                    color: white;
+                    background: var(--text-primary);
+                    color: var(--bg-color);
                     text-decoration: none;
-                    font-weight: 600;
-                    padding: 0.6rem 1.3rem;
-                    border-radius: 999px;
-                    transition: opacity 0.3s;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    padding: 0.6rem 1.2rem;
+                    border-radius: 4px;
+                    border: 1px solid var(--text-primary);
+                    box-shadow: 2px 2px 0px rgba(15, 45, 89, 0.15);
+                    transition: all 0.2s;
                 }
 
                 .live-btn:hover {
-                    opacity: 0.85;
+                    transform: translate(-1px, -1px);
+                    box-shadow: 3px 3px 0px rgba(15, 45, 89, 0.2);
                 }
 
                 .source-btn {
                     display: inline-flex;
                     align-items: center;
-                    gap: 0.5rem;
-                    color: white;
+                    gap: 0.4rem;
+                    color: var(--text-primary);
                     text-decoration: none;
-                    font-weight: 600;
-                    padding-bottom: 4px;
-                    border-bottom: 2px solid var(--accent-color);
-                    transition: opacity 0.3s;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    padding-bottom: 3px;
+                    border-bottom: 1.5px solid var(--text-primary);
+                    transition: all 0.2s;
                 }
+                
                 .source-btn:hover {
-                    opacity: 0.8;
+                    color: var(--accent-color);
+                    border-bottom-color: var(--accent-color);
                 }
             `}</style>
-        </motion.div>
+        </div>
     );
 };
 
 const Projects = () => {
     return (
-        <section id="projects" className="section bg-dark">
+        <section id="projects" className="section" style={{ borderBottom: '1px dashed var(--border-color)' }}>
+            {/* Corner crosshairs for section drafting border */}
+            <div style={{ position: 'absolute', bottom: '0', left: '40px', width: '20px', height: '20px', borderBottom: '1px solid var(--border-color)', borderLeft: '1px solid var(--border-color)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: '0', right: '40px', width: '20px', height: '20px', borderBottom: '1px solid var(--border-color)', borderRight: '1px solid var(--border-color)', pointerEvents: 'none' }} />
+
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -377,6 +380,7 @@ const Projects = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
+                    <span className="section-annotation">[ SEC-04 // PRODUCTION_ARCHITECTURES ]</span>
                     <h3 className="section-title">Featured Projects</h3>
                     <div className="projects-container">
                         {projects.map((project, index) => (

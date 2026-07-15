@@ -98,7 +98,6 @@ const experiences = [
         link: 'https://www.udacity.com/certificate/e/ad8ffe4a-3c3c-11f0-9c0d-23be28a9dd3f',
         type: 'Course / Certification'
     },
-
     {
         title: 'AI & Cloud Internship',
         organization: 'Edunet Foundation (IBM Cloud)',
@@ -115,8 +114,6 @@ const experiences = [
         type: 'Internship'
     }
 ];
-
-
 
 const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
     const { openLightbox } = useLightbox();
@@ -139,7 +136,7 @@ const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
                         className="experience-img"
                     />
                     <div className="media-overlay">
-                        <span>Click to Zoom</span>
+                        <span>ZOOM_IMAGE</span>
                     </div>
                 </div>
             </div>
@@ -148,16 +145,16 @@ const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
             <div className="experience-info">
                 <div className="info-header">
                     <span className="experience-type">
-                        <Award size={14} style={{ display: 'inline', marginRight: '4px' }} />
-                        {item.type}
+                        <Award size={14} style={{ display: 'inline', marginRight: '5px' }} />
+                        [{item.type.toUpperCase()}]
                     </span>
                     <h3 className="experience-title">{item.title}</h3>
                     <h4 className="experience-org">{item.organization}</h4>
                 </div>
 
                 <div className="date-badge">
-                    <Calendar size={14} />
-                    <span>{item.date}</span>
+                    <Calendar size={13} />
+                    <span>{item.date.toUpperCase().replace(' — ', ' // ')}</span>
                 </div>
 
                 <p className="experience-desc">{item.description}</p>
@@ -165,7 +162,7 @@ const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
                 <div className="features-list">
                     {item.keyTakeaways.map((takeaway: string, i: number) => (
                         <div key={i} className="feature-item">
-                            <CheckCircle2 size={16} className="feature-icon" />
+                            <CheckCircle2 size={15} className="feature-icon" />
                             <span>{takeaway}</span>
                         </div>
                     ))}
@@ -189,7 +186,7 @@ const ExperienceCard = ({ item, index }: { item: any; index: number }) => {
 
                 {item.link && (
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className="verify-btn">
-                        <ExternalLink size={16} /> Verify Certificate
+                        <ExternalLink size={15} /> VERIFY_CREDENTIAL
                     </a>
                 )}
             </div>
@@ -212,7 +209,11 @@ const Experience = () => {
     }, []);
 
     return (
-        <section id="experience" className="section">
+        <section id="experience" className="section" style={{ borderBottom: '1px dashed var(--border-color)' }}>
+            {/* Corner crosshairs for section drafting border */}
+            <div style={{ position: 'absolute', bottom: '0', left: '40px', width: '20px', height: '20px', borderBottom: '1px solid var(--border-color)', borderLeft: '1px solid var(--border-color)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: '0', right: '40px', width: '20px', height: '20px', borderBottom: '1px solid var(--border-color)', borderRight: '1px solid var(--border-color)', pointerEvents: 'none' }} />
+
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -220,6 +221,7 @@ const Experience = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
+                    <span className="section-annotation">[ SEC-05 // CAREER_TIMELINE_&_ACCREDITATIONS ]</span>
                     <h3 className="section-title">Experience & Certifications</h3>
 
                     <div className="experience-container">
@@ -230,8 +232,11 @@ const Experience = () => {
 
                     <div className="badges-section glass">
                         <div className="badges-header">
-                            <h4 className="category-title">Verified Credentials</h4>
-                            <p className="badges-subtitle">Digital badges & certifications awarded by industry leaders</p>
+                            <span style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.7rem', color: 'var(--accent-color)', display: 'block', marginBottom: '0.5rem' }}>
+                                [ DATABASE_QUERY // CREDLY_VERIFIED ]
+                            </span>
+                            <h4 className="category-title" style={{ borderBottom: 'none', paddingBottom: 0, marginBottom: '0.5rem' }}>Verified Credentials</h4>
+                            <p className="badges-subtitle">Digital badges & certifications awarded by industry partners</p>
                         </div>
 
                         <div className="badge-grid">
@@ -255,25 +260,23 @@ const Experience = () => {
                     display: flex;
                     flex-direction: column;
                     gap: 2rem;
-                    padding: 2rem;
-                    margin-bottom: 3rem;
-                    border-radius: 20px;
-                    border: 1px solid var(--glass-border);
-                    background: rgba(255, 255, 255, 0.03);
-                    transition: transform 0.3s, border-color 0.3s;
+                    padding: 2.2rem;
+                    margin-bottom: 3.5rem;
+                    border-radius: 4px;
+                    background: rgba(255, 255, 255, 0.7);
+                    transition: border-color 0.3s;
                 }
                 
                 .experience-row:hover {
-                    border-color: rgba(124, 58, 237, 0.3);
-                    background: rgba(255, 255, 255, 0.05);
+                    border-color: var(--accent-color);
                 }
 
                 @media (min-width: 992px) {
                     .experience-row {
                         flex-direction: row;
                         align-items: center;
-                        gap: 3rem;
-                        padding: 2.5rem;
+                        gap: 3.5rem;
+                        padding: 3rem;
                     }
                     .row-reverse {
                         flex-direction: row-reverse;
@@ -288,12 +291,13 @@ const Experience = () => {
 
                 .media-container {
                     position: relative;
-                    border-radius: 12px;
+                    border-radius: 2px;
                     overflow: hidden;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    box-shadow: 4px 4px 15px rgba(15, 45, 89, 0.08);
                     cursor: pointer;
                     aspect-ratio: 16/10;
-                    border: 1px solid rgba(255,255,255,0.05);
+                    border: 1px solid var(--border-color);
+                    background: #fdfbf7;
                 }
 
                 .experience-img {
@@ -304,13 +308,13 @@ const Experience = () => {
                 }
 
                 .media-container:hover .experience-img {
-                    transform: scale(1.05);
+                    transform: scale(1.03);
                 }
                 
                 .media-overlay {
                     position: absolute;
                     inset: 0;
-                    background: rgba(0,0,0,0.4);
+                    background: rgba(15, 45, 89, 0.1);
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -321,65 +325,73 @@ const Experience = () => {
                     opacity: 1;
                 }
                 .media-overlay span {
-                    color: white;
-                    font-weight: 600;
-                    background: rgba(0,0,0,0.6);
+                    color: var(--bg-color);
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.75rem;
+                    font-weight: bold;
+                    background: var(--text-primary);
                     padding: 0.5rem 1rem;
-                    border-radius: 20px;
+                    border-radius: 4px;
+                    box-shadow: 2px 2px 5px rgba(15, 45, 89, 0.2);
                 }
 
                 .experience-type {
                     color: var(--accent-color);
-                    font-size: 0.8rem;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.75rem;
                     font-weight: 700;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
+                    letter-spacing: 0.05em;
                     display: flex;
                     align-items: center;
                     margin-bottom: 0.5rem;
                 }
 
                 .experience-title {
-                    font-size: 1.75rem;
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-size: 1.6rem;
                     margin: 0;
-                    color: white;
-                    line-height: 1.2;
+                    color: var(--text-primary);
+                    line-height: 1.25;
+                    font-weight: 700;
                 }
                 
                 .experience-org {
-                    font-size: 1.1rem;
-                    color: var(--text-primary);
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-size: 1.15rem;
+                    color: var(--text-secondary);
                     margin: 0.25rem 0 1rem;
-                    font-weight: 500;
-                    opacity: 0.9;
+                    font-weight: 600;
                 }
 
                 .date-badge {
                     display: inline-flex;
                     align-items: center;
                     gap: 0.5rem;
-                    background: rgba(255,255,255,0.05);
-                    padding: 0.3rem 0.8rem;
-                    border-radius: 8px;
-                    font-size: 0.85rem;
+                    background: transparent;
+                    padding: 0.3rem 0.75rem;
+                    border-radius: 4px;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.75rem;
+                    font-weight: 600;
                     color: var(--text-secondary);
                     margin-bottom: 1.5rem;
-                    border: 1px solid rgba(255,255,255,0.1);
+                    border: 1.5px solid var(--border-color);
                 }
 
                 .experience-desc {
                     color: var(--text-secondary);
-                    line-height: 1.7;
+                    line-height: 1.6;
                     margin-bottom: 1.5rem;
-                    font-size: 1.05rem;
+                    font-size: 0.95rem;
                 }
 
                 .features-list {
                     display: grid;
                     grid-template-columns: 1fr;
-                    gap: 1rem;
+                    gap: 0.75rem;
                     margin-bottom: 2rem;
                 }
+                
                 .experience-badges {
                     display: flex;
                     gap: 0.75rem;
@@ -388,38 +400,67 @@ const Experience = () => {
                 }
 
                 .badge-thumb {
-                    border: 1px solid rgba(255,255,255,0.1);
-                    border-radius: 12px;
-                    background: rgba(255,255,255,0.03);
-                    padding: 6px;
+                    border: 1px solid var(--border-color);
+                    border-radius: 4px;
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 4px;
                     cursor: pointer;
-                    transition: transform 0.2s ease, border-color 0.2s ease;
+                    transition: transform 0.2s, border-color 0.2s;
+                    position: relative;
+                    overflow: hidden;
                 }
 
                 .badge-thumb img {
-                    width: 88px;
-                    height: 88px;
+                    width: 72px;
+                    height: 72px;
                     object-fit: cover;
-                    border-radius: 8px;
+                    border-radius: 2px;
                     display: block;
                 }
 
                 .badge-thumb:hover {
                     transform: translateY(-2px);
-                    border-color: rgba(124, 58, 237, 0.4);
+                    border-color: var(--accent-color);
+                }
+
+                /* Holographic scanner effect line */
+                .badge-thumb::before {
+                  content: '';
+                  position: absolute;
+                  top: -100%;
+                  left: 0;
+                  right: 0;
+                  height: 3px;
+                  background: var(--accent-color);
+                  box-shadow: 0 0 6px var(--accent-color);
+                  opacity: 0;
+                  transition: opacity 0.2s;
+                  pointer-events: none;
+                  z-index: 5;
+                }
+                
+                .badge-thumb:hover::before {
+                  opacity: 1;
+                  animation: holographic-scan 1.8s linear infinite;
+                }
+
+                @keyframes holographic-scan {
+                  0% { top: -5%; }
+                  50% { top: 105%; }
+                  100% { top: -5%; }
                 }
 
                 .feature-item {
                     display: flex;
                     align-items: flex-start;
-                    gap: 10px;
-                    font-size: 0.95rem;
-                    color: #ddd;
+                    gap: 8px;
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
                 }
 
                 .feature-icon {
-                    color: var(--accent-color);
-                    margin-top: 4px;
+                    color: var(--text-primary);
+                    margin-top: 2px;
                     flex-shrink: 0;
                 }
 
@@ -427,41 +468,40 @@ const Experience = () => {
                     display: inline-flex;
                     align-items: center;
                     gap: 0.5rem;
-                    color: white;
-                    background: var(--accent-color);
+                    color: var(--bg-color);
+                    background: var(--text-primary);
                     padding: 0.6rem 1.2rem;
-                    border-radius: 30px;
+                    border-radius: 4px;
+                    border: 1px solid var(--text-primary);
                     text-decoration: none;
-                    font-weight: 600;
-                    font-size: 0.9rem;
+                    font-family: 'IBM Plex Mono', monospace;
+                    font-weight: 700;
+                    font-size: 0.8rem;
                     transition: all 0.2s;
-                    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+                    box-shadow: 2px 2px 0px rgba(15, 45, 89, 0.15);
                 }
                 .verify-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+                    transform: translate(-1px, -1px);
+                    box-shadow: 3px 3px 0px rgba(15, 45, 89, 0.2);
                 }
 
                 .badges-section {
-                    margin-top: 4rem;
-                    padding: 2rem 1.5rem;
+                    margin-top: 4.5rem;
+                    padding: 3rem 2rem;
                     text-align: center;
-                    border-radius: 20px;
+                    border-radius: 4px;
+                    background: rgba(255, 255, 255, 0.7);
+                    border: 1px solid var(--border-color);
                 }
                 
                 .badges-header {
-                    margin-bottom: 2rem;
-                }
-
-                .category-title {
-                    font-size: 1.75rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 2.5rem;
                 }
                 
                 .badges-subtitle {
                     color: var(--text-secondary);
-                    font-size: 1rem;
+                    font-size: 0.95rem;
+                    margin-top: 0.4rem;
                 }
 
                 .badge-grid {
@@ -471,17 +511,19 @@ const Experience = () => {
                     justify-content: center;
                 }
                 .badge-card {
-                    background: rgba(255,255,255,0.02);
-                    border-radius: 12px;
-                    padding: 8px;
-                    border: 1px solid transparent;
-                    transition: all 0.3s ease;
+                    background: rgba(255, 255, 255, 0.8);
+                    border-radius: 4px;
+                    padding: 10px;
+                    border: 1px solid var(--border-color);
+                    transition: all 0.2s;
+                    box-shadow: 2px 2px 0px rgba(15, 45, 89, 0.05);
+                    position: relative;
+                    overflow: hidden;
                 }
                 .badge-card:hover {
-                    transform: translateY(-4px);
-                    background: rgba(255,255,255,0.05);
-                    border-color: rgba(255,255,255,0.1);
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    transform: translateY(-3px);
+                    border-color: var(--accent-color);
+                    box-shadow: 4px 4px 8px rgba(15, 45, 89, 0.08);
                 }
             `}</style>
         </section>

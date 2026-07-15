@@ -13,7 +13,9 @@ const Navbar = () => {
             setScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     const navLinks = [
@@ -35,18 +37,20 @@ const Navbar = () => {
             animate="visible"
             transition={{ duration: 0.5 }}
             variants={variants}
-            className={`navbar-container ${scrolled ? 'scrolled' : 'transparent'}`}
+            className={`navbar-container ${scrolled ? 'scrolled' : 'transparent'} no-print`}
         >
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link
-                    to="hero"
-                    smooth={true}
-                    duration={300}
-                    className="brand-logo"
-                    style={{ cursor: 'pointer', fontWeight: 'bold', fontSize: '1.5rem' }}
-                >
-                    <img src="/assets/logo.png" alt="Logo" style={{ height: '40px' }} />
-                </Link>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                    <Link
+                        to="hero"
+                        smooth={true}
+                        duration={300}
+                        className="brand-logo"
+                        style={{ cursor: 'pointer', fontWeight: 'bold', fontSize: '1.5rem', display: 'flex', alignItems: 'center' }}
+                    >
+                        <img src="/assets/logo.png" alt="Logo" style={{ height: '40px' }} />
+                    </Link>
+                </div>
 
                 {/* Desktop Menu */}
                 <div className="desktop-menu" id="desktop-menu">
@@ -62,16 +66,18 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <a
-                        href="/assets/Shubham_Resume.pdf"
+                        href="/assets/Shubham_resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-outline"
                         style={{
                             padding: '0.5rem 1rem',
-                            border: '1px solid var(--accent-color)',
-                            borderRadius: '8px',
-                            color: 'var(--accent-color)',
+                            border: '1px solid var(--text-primary)',
+                            borderRadius: '4px',
+                            color: 'var(--text-primary)',
+                            fontFamily: 'IBM Plex Mono, monospace',
                             fontWeight: 'bold',
+                            fontSize: '0.85rem',
                             cursor: 'pointer'
                         }}
                     >
@@ -113,13 +119,14 @@ const Navbar = () => {
                                 </Link>
                             ))}
                             <a
-                                href="/assets/Shubham_Resume.pdf"
+                                href="/assets/Shubham_resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mobile-nav-link"
                                 style={{
                                     color: 'var(--accent-color)',
                                     fontWeight: 'bold',
+                                    borderBottom: 'none'
                                 }}
                             >
                                 Resume
