@@ -24,11 +24,13 @@ const Contact = () => {
       }
     ]);
     const [input, setInput] = useState('');
-    const terminalEndRef = useRef<HTMLDivElement>(null);
+    const logsContainerRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const scrollToBottom = () => {
-      terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      if (logsContainerRef.current) {
+        logsContainerRef.current.scrollTop = logsContainerRef.current.scrollHeight;
+      }
     };
 
     useEffect(() => {
@@ -177,8 +179,8 @@ const Contact = () => {
                             <div>PORT_22 // SSH</div>
                         </div>
 
-                        {/* Terminal Logs Output Area */}
                         <div
+                            ref={logsContainerRef}
                             style={{
                                 padding: '1.2rem',
                                 fontFamily: 'IBM Plex Mono, monospace',
@@ -203,7 +205,6 @@ const Contact = () => {
                                     )}
                                 </div>
                             ))}
-                            <div ref={terminalEndRef} />
                         </div>
 
                         {/* Terminal Command Input form */}
