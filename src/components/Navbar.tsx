@@ -66,7 +66,7 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <a
-                        href="/assets/Shubham_resume.pdf"
+                        href="/assets/Shubham_Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-outline"
@@ -119,7 +119,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                             <a
-                                href="/assets/Shubham_resume.pdf"
+                                href="/assets/Shubham_Resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mobile-nav-link"

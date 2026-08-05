@@ -89,7 +89,7 @@ const Contact = () => {
                 output = '[OK] Fetching algorithmic logs... Opening LeetCode metrics...';
                 break;
             case 'resume':
-                window.open('/assets/Shubham_resume.pdf', '_blank');
+                window.open('/assets/Shubham_Resume.pdf', '_blank');
                 output = '[OK] Rendering Active Resume PDF folder...';
                 break;
             case 'ping':
